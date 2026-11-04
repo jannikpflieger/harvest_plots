@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "fredkin_n3.trans",
+        rseed: 46,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 7 products and 3 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               7
+  Number of Cliffords:              0
+  Layers:                           7
+  Products per layer:               1.00 avg, 1 max
+Generated topology with dimensions: 5 4
+Number of qubits:
+  data:         4 (0.200)
+  bus:          0 (0.000)
+  magic:        16 (0.800)
+  total:        20
+Precomputed terminals and root candidates for 7 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+14%28%42%57%71%85%100%
+Qubit fractions used:
+  data:        0.679
+  bus:         NaN
+  magic:       0.188
+Magic unused 0.518
+Magic state cultivation time:
+  number:  17
+  average: 2.29
+  min:     1
+  max:     7
+T gate failures: 0/7 (0.0%)
+Steiner tree computation called 6 times
+A* computation called 1 times
+Timing: Scheduler::sched_circuit took 0.00 s
+Scheduled 7 in 7 logical cycles, volume 140
+Parallelism: 1.000x
+Max parallelism estimate: 1.429
+Volume estimate: 140
+Normalized scheduling efficiency: 1.000
+Scheduled products written to fredkin_n3.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:  177.54 μs  avg:   25.36 μs  max:   28.36 μs  calls: 7
+  other                     total:   59.65 μs  avg:    8.52 μs  max:    8.66 μs  calls: 7
+  schedule_lcycle           total:  119.23 μs  avg:   17.03 μs  max:   18.30 μs  calls: 7
+  update_cultivators        total:   12.85 μs  avg:    1.84 μs  max:    2.31 μs  calls: 7
+  sched_precomputed         total:   11.38 μs  avg:    1.63 μs  max:    1.96 μs  calls: 7
+  sched_remaining           total:   25.28 μs  avg:    3.61 μs  max:    4.89 μs  calls: 7
+  complete_lcycle           total:   16.69 μs  avg:    2.38 μs  max:    4.82 μs  calls: 7
+Timing: main took 0.00 s

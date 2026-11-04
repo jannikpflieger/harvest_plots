@@ -1,0 +1,62 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "adder_n10.trans", rseed: 45, magic_state_lambda: 0.3333333333333333, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: true, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 56
+# Total logical cycles: 56
+# Total products: 56
+# Parallelism: 1.00
+ 1: XY___Y____ 0<T>
+ 2: YX___Y____ 1<T>
+ 3: YY___X____ 2<T>
+ 4: XX___X____ 3<T>
+ 5: _Z___Z____ 4<T>
+ 6: ZZ________ 5<T>
+ 7: Z____Z____ 6<T>
+ 8: XXY__XY___ 7<T>
+ 9: XYX__XY___ 8<T>
+10: XYY__XX___ 9<T>
+11: XXX__XX___ 10<T>
+12: __Z___Z___ 11<T>
+13: _ZZ_______ 12<T>
+14: _Z____Z___ 13<T>
+15: XXXY_XXY__ 14<T>
+16: XXYX_XXY__ 15<T>
+17: XXYY_XXX__ 16<T>
+18: XXXX_XXX__ 17<T>
+19: ___Z___Z__ 18<T>
+20: __ZZ______ 19<T>
+21: __Z____Z__ 20<T>
+22: XXXXYXXXY_ 21<T>
+23: XXXYXXXXY_ 22<T>
+24: XXXYYXXXX_ 23<T>
+25: XXXXXXXXX_ 24<T>
+26: ____Z___Z_ 25<T>
+27: ___ZZ_____ 26<T>
+28: ___Z____Z_ 27<T>
+29: XXXXYXXXYX 28<T>
+30: XXXYXXXXYX 29<T>
+31: XXXYYXXXXX 30<T>
+32: XXXXXXXXXX 31<T>
+33: ____Z___Z_ 32<T>
+34: ___ZZ_____ 33<T>
+35: ___Z____Z_ 34<T>
+36: XXXY_XXYX_ 35<T>
+37: XXYX_XXYX_ 36<T>
+38: XXYY_XXXX_ 37<T>
+39: XXXX_XXXX_ 38<T>
+40: ___Z___Z__ 39<T>
+41: __ZZ______ 40<T>
+42: __Z____Z__ 41<T>
+43: XXY__XYX__ 42<T>
+44: XYX__XYX__ 43<T>
+45: XYY__XXX__ 44<T>
+46: XXX__XXX__ 45<T>
+47: __Z___Z___ 46<T>
+48: _ZZ_______ 47<T>
+49: _Z____Z___ 48<T>
+50: XY___YX___ 49<T>
+51: YX___YX___ 50<T>
+52: YY___XX___ 51<T>
+53: XX___XX___ 52<T>
+54: _Z___Z____ 53<T>
+55: ZZ________ 54<T>
+56: Z____Z____ 55<T>

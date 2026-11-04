@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "vqe_uccsd_n6.trans",
+        rseed: 1005,
+        magic_state_lambda: 0.5,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 4214 products and 6 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               4214
+  Number of Cliffords:              0
+  Layers:                           4208
+  Products per layer:               1.00 avg, 2 max
+Generated topology with dimensions: 7 4
+Number of qubits:
+  data:         6 (0.214)
+  bus:          0 (0.000)
+  magic:        22 (0.786)
+  total:        28
+Precomputed terminals and root candidates for 4214 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.814
+  bus:         NaN
+  magic:       0.375
+Magic unused 0.536
+Magic state cultivation time:
+  number:  7221
+  average: 1.40
+  min:     1
+  max:     12
+T gate failures: 2074/4214 (49.2%)
+Steiner tree computation called 3755 times
+A* computation called 459 times
+Timing: Scheduler::sched_circuit took 0.12 s
+Scheduled 4214 in 4210 logical cycles, volume 117880
+Parallelism: 1.001x
+Max parallelism estimate: 1.502
+Volume estimate: 117824
+Normalized scheduling efficiency: 1.000
+Scheduled products written to vqe_uccsd_n6.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:   105.2 ms  avg:   24.99 μs  max:  167.55 μs  calls: 4210
+  other                     total:    35.5 ms  avg:    8.43 μs  max:   72.50 μs  calls: 4210
+  schedule_lcycle           total:    76.1 ms  avg:   18.07 μs  max:   84.30 μs  calls: 4210
+  update_cultivators        total:     7.5 ms  avg:    1.79 μs  max:   15.02 μs  calls: 4210
+  sched_precomputed         total:     6.9 ms  avg:    1.63 μs  max:   14.88 μs  calls: 4210
+  sched_remaining           total:    20.3 ms  avg:    4.81 μs  max:   38.48 μs  calls: 4210
+  complete_lcycle           total:     8.3 ms  avg:    1.98 μs  max:  144.71 μs  calls: 4210
+Timing: main took 0.13 s

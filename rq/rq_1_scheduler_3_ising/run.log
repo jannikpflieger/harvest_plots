@@ -1,0 +1,23 @@
+2026-10-30 11:45:40,604 INFO rq_1_scheduler_3_ising: 22 task(s), 0 already done, 22 to run with 3 worker(s)
+2026-10-30 11:48:29,506 INFO done 1 (21 left, 169 s): rq_1_scheduler_3_ising|ising_n404|harvest3|dense4full|instant|
+2026-10-30 11:51:06,498 INFO done 2 (20 left, 326 s): rq_1_scheduler_3_ising|ising_n400|harvest3|blocks4|cultivation|42
+2026-10-30 11:52:21,578 INFO done 3 (19 left, 401 s): rq_1_scheduler_3_ising|ising_n400|harvest3|blocks4|instant|
+2026-10-30 11:53:32,889 INFO done 4 (18 left, 472 s): rq_1_scheduler_3_ising|ising_n404|harvest3|blocks4|cultivation|42
+2026-10-30 11:54:01,502 INFO done 5 (17 left, 501 s): rq_1_scheduler_3_ising|ising_n408|harvest3|dense4full|instant|
+2026-10-30 11:56:07,571 INFO done 6 (16 left, 627 s): rq_1_scheduler_3_ising|ising_n412|harvest3|dense4full|instant|
+2026-10-30 11:57:50,545 INFO done 7 (15 left, 730 s): rq_1_scheduler_3_ising|ising_n408|harvest3|blocks4|cultivation|42
+2026-10-30 11:58:58,873 INFO done 8 (14 left, 798 s): rq_1_scheduler_3_ising|ising_n416|harvest3|dense4full|instant|
+2026-10-30 11:59:07,286 INFO done 9 (13 left, 807 s): rq_1_scheduler_3_ising|ising_n412|harvest3|blocks4|cultivation|42
+2026-10-30 12:02:46,486 INFO done 10 (12 left, 1026 s): rq_1_scheduler_3_ising|ising_n420|harvest3|dense4full|instant|
+2026-10-30 12:03:53,077 INFO done 11 (11 left, 1092 s): rq_1_scheduler_3_ising|ising_n416|harvest3|blocks4|cultivation|42
+2026-10-30 12:04:20,678 INFO done 12 (10 left, 1120 s): rq_1_scheduler_3_ising|ising_n420|harvest3|blocks4|cultivation|42
+2026-10-30 12:10:40,259 INFO done 13 (9 left, 1500 s): rq_1_scheduler_3_ising|ising_n424|harvest3|blocks4|cultivation|42
+2026-10-30 12:10:58,322 INFO done 14 (8 left, 1518 s): rq_1_scheduler_3_ising|ising_n424|harvest3|blocks4|instant|
+2026-10-30 12:11:50,914 INFO done 15 (7 left, 1570 s): rq_1_scheduler_3_ising|ising_n428|harvest3|blocks4|instant|
+2026-10-30 12:17:40,636 INFO done 16 (6 left, 1920 s): rq_1_scheduler_3_ising|ising_n432|harvest3|blocks4|instant|
+2026-10-30 12:18:12,769 INFO done 17 (5 left, 1952 s): rq_1_scheduler_3_ising|ising_n428|harvest3|blocks4|cultivation|42
+2026-10-30 12:18:43,854 INFO done 18 (4 left, 1983 s): rq_1_scheduler_3_ising|ising_n432|harvest3|blocks4|cultivation|42
+2026-10-30 12:25:12,412 INFO done 19 (3 left, 2372 s): rq_1_scheduler_3_ising|ising_n436|harvest3|blocks4|cultivation|42
+2026-10-30 12:25:49,669 INFO done 20 (2 left, 2409 s): rq_1_scheduler_3_ising|ising_n436|harvest3|blocks4|instant|
+2026-10-30 12:29:01,977 INFO done 21 (1 left, 2601 s): rq_1_scheduler_3_ising|ising_n440|harvest3|blocks4|instant|
+2026-10-30 12:31:49,084 INFO done 22 (0 left, 2768 s): rq_1_scheduler_3_ising|ising_n440|harvest3|blocks4|cultivation|42

@@ -1,0 +1,6 @@
+compiler,instant_volume_ratio_geomean,instant_T_ratio_geomean,instant_area_ratio_geomean,instant_T_over_cp_geomean,instant_patches_median,instant_wins,instant_ties,instant_losses,instant_faster_than_harvest,instant_compile_time_geomean_s,instant_completed,instant_circuits,suite_circuits,cultivation_volume_ratio_geomean,cultivation_T_ratio_geomean,cultivation_area_ratio_geomean,cultivation_T_over_cp_geomean,cultivation_patches_median,cultivation_wins,cultivation_ties,cultivation_losses,cultivation_faster_than_harvest,cultivation_compile_time_geomean_s,cultivation_completed,cultivation_circuits
+Harvest,1.0,1.0,1.0,1.1043891061350624,78.0,0,127,0,0,6.695452658719222,127,127,128,1.0,1.0,1.0,1.1478652765688866,85.0,0,128,0,0,7.079655453855074,128,128
+EAF,,,,,,0,0,0,0,,0,0,128,,,,,,0,0,0,0,,0,0
+PureMagic,,,,,,0,0,0,0,,0,0,128,,,,,,0,0,0,0,,0,0
+Litinski,,,,,,0,0,0,0,,0,0,128,,,,,,0,0,0,0,,0,0
+O3LS,,,,,,0,0,0,0,,0,0,128,,,,,,0,0,0,0,,0,0

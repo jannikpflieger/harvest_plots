@@ -1,0 +1,17 @@
+circuit,model,qubits,ops,parallelism,pm_data,pm_magic,pm_tiles,pm_T,pm_volume,harvest_template,harvest_data,harvest_routing,harvest_magic,harvest_tiles,harvest_pruned,harvest_T,harvest_volume
+multiplier_n15,instant,15,252,2.1,16,47,63,137,8631,dense4,15,25,4,44,2,141,6204
+ising_n34,instant,34,1845,7.885,34,96,130,258,33540,dense4full,34,56,8,98,0,340,33320
+adder_n28,instant,28,168,1.448,28,82,110,122,13420,dense4,28,38,4,70,0,124,8680
+qft_N016,instant,16,2904,1.069,16,47,63,2733,172179,dense4,16,26,4,46,0,2722,125212
+dnn_n16,instant,16,6248,1.241,16,47,63,5066,319158,dense4,16,26,4,46,0,5063,232898
+square_heisenberg_N25,instant,25,4211,1.749,26,84,110,2463,270930,dense4,25,41,4,70,0,2543,178010
+wstate_n36,instant,36,1888,1.948,36,94,130,988,128440,dense4,36,54,4,94,0,970,91180
+knn_n25,instant,25,733,9.397,26,84,110,96,10560,dense4full,25,41,16,82,0,111,9102
+multiplier_n15,cultivation,15,252,2.1,16,47,63,138,8694,dense4full,15,27,6,48,0,158,7584
+ising_n34,cultivation,34,1845,7.885,34,96,130,279,36270,blocks4,34,64,40,138,6,307,42366
+adder_n28,cultivation,28,168,1.448,28,82,110,128,14080,dense4full,28,38,16,82,0,124,10168
+qft_N016,cultivation,16,2904,1.069,16,47,63,2737,172431,dense4full,16,26,6,48,0,2779,133392
+dnn_n16,cultivation,16,6248,1.241,16,47,63,5091,320733,dense4full,16,26,6,48,0,5252,252096
+square_heisenberg_N25,cultivation,25,4211,1.749,26,84,110,2483,273130,dense4full,25,41,16,82,0,2541,208362
+wstate_n36,cultivation,36,1888,1.948,36,94,130,997,129610,dense4full,36,54,8,98,0,990,97020
+knn_n25,cultivation,25,733,9.397,26,84,110,104,11440,blocks4,25,64,40,129,15,110,14190

@@ -1,0 +1,68 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "linearsolver_n3.trans", rseed: 45, magic_state_lambda: 0.3333333333333333, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: false, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 62
+# Total logical cycles: 62
+# Total products: 62
+# Parallelism: 1.00
+ 1: XZZ 0<T>
+ 2: __X 1<T>
+ 3: XZY 2<T>
+ 4: __X 3<T>
+ 5: XZY 4<T>
+ 6: __X 5<T>
+ 7: XZY 6<T>
+ 8: XZZ 7<T>
+ 9: __X 8<T>
+10: XZZ 9<T>
+11: XZY 10<T>
+12: __X 11<T>
+13: XZY 12<T>
+14: XZZ 13<T>
+15: __X 14<T>
+16: XZZ 15<T>
+17: __X 16<T>
+18: XZZ 17<T>
+19: __X 18<T>
+20: XZZ 19<T>
+21: XZY 20<T>
+22: __X 21<T>
+23: XZY 22<T>
+24: __X 23<T>
+25: XZY 24<T>
+26: XZZ 25<T>
+27: XZY 26<T>
+28: XZZ 27<T>
+29: XZY 28<T>
+30: XZZ 29<T>
+31: __X 30<T>
+32: __X 31<T>
+33: __Z 32<T>
+34: __Y 33<T>
+35: __X 34<T>
+36: __Y 35<T>
+37: __Z 36<T>
+38: __Y 37<T>
+39: __Z 38<T>
+40: __X 39<T>
+41: __Z 40<T>
+42: __Y 41<T>
+43: __X 42<T>
+44: __Y 43<T>
+45: __Z 44<T>
+46: __Y 45<T>
+47: __X 46<T>
+48: __Y 47<T>
+49: __X 48<T>
+50: __Y 49<T>
+51: __X 50<T>
+52: __Z 51<T>
+53: __X 52<T>
+54: __Z 53<T>
+55: __Y 54<T>
+56: __Z 55<T>
+57: __Y 56<T>
+58: __Z 57<T>
+59: __X 58<T>
+60: __Y 59<T>
+61: __X 60<T>
+62: __Y 61<T>

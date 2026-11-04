@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "quantumwalks_n2.trans",
+        rseed: 46,
+        magic_state_lambda: 0.0387396,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 171 products and 2 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               171
+  Number of Cliffords:              0
+  Layers:                           143
+  Products per layer:               1.20 avg, 2 max
+Generated topology with dimensions: 3 4
+Number of qubits:
+  data:         2 (0.167)
+  bus:          0 (0.000)
+  magic:        10 (0.833)
+  total:        12
+Precomputed terminals and root candidates for 171 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.216
+  bus:         NaN
+  magic:       0.082
+Magic unused 0.004
+Magic state cultivation time:
+  number:  154
+  average: 8.79
+  min:     1
+  max:     72
+T gate failures: 0/171 (0.0%)
+Steiner tree computation called 81 times
+A* computation called 90 times
+Timing: Scheduler::sched_circuit took 0.01 s
+Scheduled 171 in 524 logical cycles, volume 6288
+Parallelism: 0.326x
+Max parallelism estimate: 0.579
+Volume estimate: 5304
+Normalized scheduling efficiency: 0.844
+Scheduled products written to quantumwalks_n2.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:    11.9 ms  avg:   22.77 μs  max:  224.00 μs  calls: 524
+  other                     total:     4.8 ms  avg:    9.16 μs  max:  210.86 μs  calls: 524
+  schedule_lcycle           total:     8.8 ms  avg:   16.75 μs  max:  219.39 μs  calls: 524
+  update_cultivators        total:  919.95 μs  avg:    1.75 μs  max:   15.58 μs  calls: 524
+  sched_precomputed         total:     1.1 ms  avg:    2.15 μs  max:  202.76 μs  calls: 524
+  sched_remaining           total:     1.3 ms  avg:    2.47 μs  max:   18.44 μs  calls: 524
+  complete_lcycle           total:  448.34 μs  avg:    2.73 μs  max:   20.05 μs  calls: 164
+Timing: main took 0.01 s

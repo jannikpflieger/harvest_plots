@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "qaoa_barabasi_albert_N64_3reps.trans",
+        rseed: 50,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 16360 products and 64 qubits
+Timing: Circuit::load_circuit took 0.02 s
+Circuit statistics:
+  Number of products:               16360
+  Number of Cliffords:              0
+  Layers:                           16204
+  Products per layer:               1.01 avg, 63 max
+Generated topology with dimensions: 17 13
+Number of qubits:
+  data:         64 (0.290)
+  bus:          0 (0.000)
+  magic:        157 (0.710)
+  total:        221
+Precomputed terminals and root candidates for 16360 products
+Timing: precompute_terminals_and_roots took 0.06 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.480
+  bus:         NaN
+  magic:       0.337
+Magic unused 0.597
+Magic state cultivation time:
+  number:  111868
+  average: 1.44
+  min:     1
+  max:     29
+T gate failures: 0/16360 (0.0%)
+Steiner tree computation called 15805 times
+A* computation called 555 times
+Timing: Scheduler::sched_circuit took 0.90 s
+Scheduled 16360 in 16204 logical cycles, volume 3581084
+Parallelism: 1.010x
+Max parallelism estimate: 1.514
+Volume estimate: 3581084
+Normalized scheduling efficiency: 1.000
+Scheduled products written to qaoa_barabasi_albert_N64_3reps.schedule
+Timing: Scheduler::print_schedule took 0.05 s
+Accumulated timings (ms):
+  schedule loop             total:   788.2 ms  avg:   48.64 μs  max:  409.56 μs  calls: 16204
+  other                     total:   165.6 ms  avg:   10.22 μs  max:  201.92 μs  calls: 16204
+  schedule_lcycle           total:   677.2 ms  avg:   41.79 μs  max:  228.53 μs  calls: 16204
+  update_cultivators        total:    48.1 ms  avg:    2.97 μs  max:  192.28 μs  calls: 16204
+  sched_precomputed         total:    25.8 ms  avg:    1.59 μs  max:   18.72 μs  calls: 16204
+  sched_remaining           total:   436.3 ms  avg:   26.92 μs  max:  102.46 μs  calls: 16204
+  complete_lcycle           total:    34.1 ms  avg:    2.10 μs  max:  349.71 μs  calls: 16204
+Timing: main took 1.03 s

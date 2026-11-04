@@ -1,0 +1,13 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "adder_n4.trans", rseed: 48, magic_state_lambda: 0.3333333333333333, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: false, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 7
+# Total logical cycles: 7
+# Total products: 8
+# Parallelism: 1.14
+1: ZZ__ 0<T> 1<T>
+2: __Z_ 2<T>
+3: __ZX 3<T>
+4: Z__X 4<T>
+5: _Z_X 5<T>
+6: ZZZ_ 6<T>
+7: ZZZX 7<T>

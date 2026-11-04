@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "square_heisenberg_N25.trans",
+        rseed: 45,
+        magic_state_lambda: 0.1,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 4211 products and 25 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               4211
+  Number of Cliffords:              0
+  Layers:                           2407
+  Products per layer:               1.75 avg, 17 max
+Generated topology with dimensions: 13 12
+Number of qubits:
+  data:         26 (0.167)
+  bus:          84 (0.538)
+  magic:        46 (0.295)
+  total:        156
+Precomputed terminals and root candidates for 4211 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.247
+  bus:         0.193
+  magic:       0.026
+Magic unused 0.612
+Magic state cultivation time:
+  number:  4053
+  average: 10.47
+  min:     1
+  max:     84
+T gate failures: 0/4211 (0.0%)
+Steiner tree computation called 3338 times
+A* computation called 1080 times
+Timing: Scheduler::sched_circuit took 0.13 s
+Scheduled 4211 in 2613 logical cycles, volume 407628
+Parallelism: 1.612x
+Max parallelism estimate: 2.624
+Volume estimate: 375492
+Normalized scheduling efficiency: 0.921
+Scheduled products written to square_heisenberg_N25.schedule
+Timing: Scheduler::print_schedule took 0.01 s
+Accumulated timings (ms):
+  schedule loop             total:   107.1 ms  avg:   40.98 μs  max:  279.49 μs  calls: 2613
+  other                     total:    28.0 ms  avg:   10.71 μs  max:   98.61 μs  calls: 2613
+  schedule_lcycle           total:    85.3 ms  avg:   32.63 μs  max:  269.43 μs  calls: 2613
+  update_cultivators        total:     7.0 ms  avg:    2.70 μs  max:   87.72 μs  calls: 2613
+  sched_precomputed         total:     4.6 ms  avg:    1.75 μs  max:   30.03 μs  calls: 2613
+  sched_remaining           total:    43.2 ms  avg:   16.54 μs  max:  250.44 μs  calls: 2613
+  complete_lcycle           total:     7.1 ms  avg:    2.70 μs  max:  182.14 μs  calls: 2613
+Timing: main took 0.15 s

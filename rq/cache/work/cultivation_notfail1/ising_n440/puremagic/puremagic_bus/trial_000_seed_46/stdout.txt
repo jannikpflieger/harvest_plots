@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "ising_n440.trans",
+        rseed: 46,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 24238 products and 440 qubits
+Timing: Circuit::load_circuit took 0.02 s
+Circuit statistics:
+  Number of products:               24238
+  Number of Cliffords:              0
+  Layers:                           480
+  Products per layer:               50.50 avg, 290 max
+Generated topology with dimensions: 47 33
+Number of qubits:
+  data:         440 (0.284)
+  bus:          959 (0.618)
+  magic:        152 (0.098)
+  total:        1551
+Precomputed terminals and root candidates for 24238 products
+Timing: precompute_terminals_and_roots took 0.01 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.100
+  bus:         0.214
+  magic:       0.098
+Magic unused 0.342
+Magic state cultivation time:
+  number:  20665
+  average: 3.51
+  min:     1
+  max:     32
+T gate failures: 0/24238 (0.0%)
+Steiner tree computation called 42910 times
+A* computation called 39178 times
+Timing: Scheduler::sched_circuit took 0.93 s
+Scheduled 24238 in 966 logical cycles, volume 1498266
+Parallelism: 25.091x
+Max parallelism estimate: 75.744
+Volume estimate: 744480
+Normalized scheduling efficiency: 0.497
+Scheduled products written to ising_n440.schedule
+Timing: Scheduler::print_schedule took 0.02 s
+Accumulated timings (ms):
+  schedule loop             total:   868.7 ms  avg:  899.23 μs  max:     4.2 ms  calls: 966
+  other                     total:    49.7 ms  avg:   51.44 μs  max:  329.02 μs  calls: 966
+  schedule_lcycle           total:   852.2 ms  avg:  882.16 μs  max:     4.2 ms  calls: 966
+  update_cultivators        total:     4.1 ms  avg:    4.20 μs  max:   18.58 μs  calls: 966
+  sched_precomputed         total:     2.3 ms  avg:    2.38 μs  max:   14.53 μs  calls: 966
+  sched_remaining           total:   797.8 ms  avg:  825.90 μs  max:     3.9 ms  calls: 966
+  complete_lcycle           total:    11.4 ms  avg:   11.82 μs  max:  176.42 μs  calls: 966
+Timing: main took 0.99 s

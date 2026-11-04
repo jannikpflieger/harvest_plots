@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "dnn_n33.trans",
+        rseed: 1001,
+        magic_state_lambda: 1.0,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 3383 products and 33 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               3383
+  Number of Cliffords:              0
+  Layers:                           2240
+  Products per layer:               1.51 avg, 32 max
+Generated topology with dimensions: 15 12
+Number of qubits:
+  data:         34 (0.189)
+  bus:          98 (0.544)
+  magic:        48 (0.267)
+  total:        180
+Precomputed terminals and root candidates for 3383 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.097
+  bus:         0.082
+  magic:       0.019
+Magic unused 0.939
+Magic state cultivation time:
+  number:  2110
+  average: 1.61
+  min:     1
+  max:     10
+T gate failures: 1652/3383 (48.8%)
+Steiner tree computation called 2075 times
+A* computation called 1505 times
+Timing: Scheduler::sched_circuit took 0.08 s
+Scheduled 3383 in 2311 logical cycles, volume 415980
+Parallelism: 1.464x
+Max parallelism estimate: 2.265
+Volume estimate: 403200
+Normalized scheduling efficiency: 0.969
+Scheduled products written to dnn_n33.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:    65.6 ms  avg:   28.39 μs  max:   99.73 μs  calls: 2311
+  other                     total:    21.2 ms  avg:    9.17 μs  max:   26.19 μs  calls: 2311
+  schedule_lcycle           total:    48.6 ms  avg:   21.03 μs  max:   48.40 μs  calls: 2311
+  update_cultivators        total:     5.2 ms  avg:    2.25 μs  max:   18.65 μs  calls: 2311
+  sched_precomputed         total:     3.8 ms  avg:    1.66 μs  max:   12.85 μs  calls: 2311
+  sched_remaining           total:    16.0 ms  avg:    6.93 μs  max:   34.78 μs  calls: 2311
+  complete_lcycle           total:     5.3 ms  avg:    2.29 μs  max:   72.70 μs  calls: 2311
+Timing: main took 0.09 s

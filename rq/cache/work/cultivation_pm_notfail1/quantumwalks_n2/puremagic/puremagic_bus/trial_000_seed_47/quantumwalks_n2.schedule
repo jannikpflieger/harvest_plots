@@ -1,0 +1,161 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "quantumwalks_n2.trans", rseed: 47, magic_state_lambda: 0.0387396, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: false, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 155
+# Total logical cycles: 339
+# Total products: 171
+# Parallelism: 0.50
+  3: X_ 0<T>
+  7: _X 28<T>
+  8: ZY 1<T> 29<T>
+  9: X_ 2<T>
+ 11: _X 30<T>
+ 12: Y_ 3<T>
+ 14: _Z 31<T>
+ 15: Z_ 4<T>
+ 16: _Y 32<T>
+ 18: YZ 5<T> 33<T>
+ 21: Z_ 6<T>
+ 22: YY 7<T> 34<T>
+ 23: _X 35<T>
+ 28: ZY 8<T> 36<T>
+ 30: X_ 9<T>
+ 31: _X 37<T>
+ 33: YZ 10<T> 38<T>
+ 34: XX 11<T> 39<T>
+ 35: Z_ 12<T>
+ 36: XZ 13<T> 40<T>
+ 37: _Y 41<T>
+ 38: Y_ 14<T>
+ 39: _Z 42<T>
+ 45: X_ 15<T>
+ 47: ZY 16<T> 43<T>
+ 50: _X 44<T>
+ 55: XZ 17<T> 45<T>
+ 56: YY 18<T> 46<T>
+ 57: Z_ 19<T>
+ 60: YZ 20<T> 47<T>
+ 61: _Y 48<T>
+ 63: X_ 21<T>
+ 66: ZZ 22<T> 49<T>
+ 75: XX 23<T> 50<T>
+ 76: YZ 24<T> 51<T>
+ 78: XX 25<T> 52<T>
+ 82: _Z 53<T>
+ 84: Y_ 26<T>
+ 87: _X 54<T>
+ 92: XZ 27<T> 55<T>
+102: _X 56<T>
+105: _Z 57<T>
+106: XY 58<T>
+107: Z_ 59<T>
+109: XY 60<T>
+110: YY 61<T>
+111: Z_ 62<T>
+113: YY 63<T>
+114: XY 64<T>
+118: YY 65<T>
+121: Z_ 66<T>
+122: YY 67<T>
+123: XY 68<T>
+124: YY 69<T>
+126: Z_ 70<T>
+127: XY 71<T>
+128: YY 72<T>
+132: XY 73<T>
+133: YY 74<T>
+135: Z_ 75<T>
+139: YY 76<T>
+140: XY 77<T>
+141: YY 78<T>
+142: XY 79<T>
+146: YY 80<T>
+148: XY 81<T>
+154: YY 82<T>
+155: XY 83<T>
+158: YY 84<T>
+162: Z_ 85<T>
+165: YY 86<T>
+170: ZZ 87<T>
+171: _Y 88<T>
+172: ZX 89<T>
+173: ZZ 90<T>
+174: ZX 91<T>
+175: ZZ 92<T>
+179: _Y 93<T>
+180: ZZ 94<T>
+181: _Y 95<T>
+182: ZX 96<T>
+187: ZZ 97<T>
+188: ZX 98<T>
+189: ZZ 99<T>
+190: ZX 100<T>
+196: ZZ 101<T>
+197: ZX 102<T>
+198: ZZ 103<T>
+199: ZX 104<T>
+201: ZZ 105<T>
+202: ZX 106<T>
+205: ZZ 107<T>
+206: _Y 108<T>
+207: ZZ 109<T>
+208: _Y 110<T>
+209: ZZ 111<T>
+210: _Y 112<T>
+211: ZZ 113<T>
+213: _Y 114<T>
+215: YY 115<T>
+216: _Z 116<T>
+217: YX 117<T>
+222: YY 118<T>
+226: _Z 119<T>
+227: YY 120<T>
+230: _Z 121<T>
+231: YX 122<T>
+233: YY 123<T>
+236: _Z 124<T>
+237: YY 125<T>
+238: _Z 126<T>
+239: YY 127<T>
+241: _Z 128<T>
+242: YY 129<T>
+243: YX 130<T>
+248: _Z 131<T>
+250: YY 132<T>
+252: _Z 133<T>
+253: YY 134<T>
+255: _Z 135<T>
+259: YY 136<T>
+261: _Z 137<T>
+262: YX 138<T>
+269: _Z 139<T>
+270: YX 140<T>
+272: YY 141<T>
+274: YX 142<T>
+275: ZZ 143<T>
+279: XZ 144<T>
+281: ZZ 145<T>
+283: XZ 146<T>
+284: ZZ 147<T>
+285: Y_ 148<T>
+290: XZ 149<T>
+292: Y_ 150<T>
+293: ZZ 151<T>
+296: XZ 152<T>
+297: Y_ 153<T>
+298: XZ 154<T>
+300: Y_ 155<T>
+301: ZZ 156<T>
+308: Y_ 157<T>
+309: XZ 158<T>
+311: ZZ 159<T>
+316: XZ 160<T>
+319: ZZ 161<T>
+322: Y_ 162<T>
+325: ZZ 163<T>
+330: Y_ 164<T>
+331: XZ 165<T>
+332: ZZ 166<T>
+333: Y_ 167<T>
+334: ZZ 168<T>
+335: XZ 169<T>
+339: ZZ 170<T>

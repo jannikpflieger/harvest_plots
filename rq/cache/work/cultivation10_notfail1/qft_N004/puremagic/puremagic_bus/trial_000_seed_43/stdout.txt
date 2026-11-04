@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "qft_N004.trans",
+        rseed: 43,
+        magic_state_lambda: 0.1,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 195 products and 4 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               195
+  Number of Cliffords:              0
+  Layers:                           130
+  Products per layer:               1.50 avg, 3 max
+Generated topology with dimensions: 7 6
+Number of qubits:
+  data:         4 (0.095)
+  bus:          20 (0.476)
+  magic:        18 (0.429)
+  total:        42
+Precomputed terminals and root candidates for 195 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.291
+  bus:         0.148
+  magic:       0.023
+Magic unused 0.207
+Magic state cultivation time:
+  number:  195
+  average: 10.30
+  min:     1
+  max:     58
+T gate failures: 0/195 (0.0%)
+Steiner tree computation called 65 times
+A* computation called 137 times
+Timing: Scheduler::sched_circuit took 0.00 s
+Scheduled 195 in 158 logical cycles, volume 6636
+Parallelism: 1.234x
+Max parallelism estimate: 2.246
+Volume estimate: 5460
+Normalized scheduling efficiency: 0.823
+Scheduled products written to qft_N004.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     3.5 ms  avg:   22.01 μs  max:   39.73 μs  calls: 158
+  other                     total:     1.2 ms  avg:    7.51 μs  max:   20.21 μs  calls: 158
+  schedule_lcycle           total:     2.4 ms  avg:   15.20 μs  max:   31.16 μs  calls: 158
+  update_cultivators        total:  257.73 μs  avg:    1.63 μs  max:   12.00 μs  calls: 158
+  sched_precomputed         total:  244.39 μs  avg:    1.55 μs  max:    2.95 μs  calls: 158
+  sched_remaining           total:  521.15 μs  avg:    3.30 μs  max:   13.34 μs  calls: 158
+  complete_lcycle           total:  269.46 μs  avg:    1.77 μs  max:    7.65 μs  calls: 152
+Timing: main took 0.00 s

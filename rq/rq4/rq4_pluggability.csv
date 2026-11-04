@@ -1,0 +1,7 @@
+model,implementation,new_for_paper,interface_loc,scheduler_or_validator_changes_loc,restriction_stable,schedules,completed,validated_pre_pass,validated_post_pass,violations
+instant,none (no source: every terminal always ready),False,0,0,True,310,310,310,310,0
+dist4,MagicStateFactory (fixed latency mu),False,77,0,True,310,310,310,310,0
+dist10,MagicStateFactory (fixed latency mu),False,77,0,True,310,310,310,310,0
+cultivation,MagicStateCultivator + exponential_sampler,False,125,0,True,930,930,930,930,0
+lognormal,MagicStateCultivator + lognormal_sampler (new for this paper),True,9,0,True,930,930,930,930,0
+multiplexed,MultiplexedCultivator (new for this paper),True,52,0,True,930,930,930,930,0

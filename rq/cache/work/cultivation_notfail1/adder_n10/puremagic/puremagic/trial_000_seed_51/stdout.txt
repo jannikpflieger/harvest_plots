@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "adder_n10.trans",
+        rseed: 51,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 56 products and 10 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               56
+  Number of Cliffords:              0
+  Layers:                           56
+  Products per layer:               1.00 avg, 1 max
+Generated topology with dimensions: 7 7
+Number of qubits:
+  data:         10 (0.204)
+  bus:          0 (0.000)
+  magic:        39 (0.796)
+  total:        49
+Precomputed terminals and root candidates for 56 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%03%05%07%08%10%12%14%16%17%19%21%23%25%26%28%30%32%33%35%37%39%41%42%44%46%48%50%51%53%55%57%58%60%62%64%66%67%69%71%73%75%76%78%80%82%83%85%87%89%91%92%94%96%98%100%
+Qubit fractions used:
+  data:        0.543
+  bus:         NaN
+  magic:       0.223
+Magic unused 0.657
+Magic state cultivation time:
+  number:  99
+  average: 2.18
+  min:     1
+  max:     11
+T gate failures: 0/56 (0.0%)
+Steiner tree computation called 56 times
+A* computation called 0 times
+Timing: Scheduler::sched_circuit took 0.00 s
+Scheduled 56 in 56 logical cycles, volume 2744
+Parallelism: 1.000x
+Max parallelism estimate: 1.500
+Volume estimate: 2744
+Normalized scheduling efficiency: 1.000
+Scheduled products written to adder_n10.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     1.5 ms  avg:   26.76 μs  max:   44.14 μs  calls: 56
+  other                     total:  493.10 μs  avg:    8.80 μs  max:   10.06 μs  calls: 56
+  schedule_lcycle           total:     1.1 ms  avg:   19.36 μs  max:   36.53 μs  calls: 56
+  update_cultivators        total:  111.96 μs  avg:    2.00 μs  max:    2.86 μs  calls: 56
+  sched_precomputed         total:   92.26 μs  avg:    1.65 μs  max:    1.96 μs  calls: 56
+  sched_remaining           total:  332.39 μs  avg:    5.93 μs  max:   22.77 μs  calls: 56
+  complete_lcycle           total:  104.28 μs  avg:    1.86 μs  max:    5.66 μs  calls: 56
+Timing: main took 0.00 s

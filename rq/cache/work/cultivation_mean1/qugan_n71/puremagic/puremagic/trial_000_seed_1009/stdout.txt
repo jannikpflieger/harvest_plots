@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "qugan_n71.trans",
+        rseed: 1009,
+        magic_state_lambda: 1.0,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 5966 products and 71 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               5966
+  Number of Cliffords:              0
+  Layers:                           3683
+  Products per layer:               1.62 avg, 40 max
+Generated topology with dimensions: 19 13
+Number of qubits:
+  data:         72 (0.291)
+  bus:          0 (0.000)
+  magic:        175 (0.709)
+  total:        247
+Precomputed terminals and root candidates for 5966 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.073
+  bus:         NaN
+  magic:       0.061
+Magic unused 0.942
+Magic state cultivation time:
+  number:  9669
+  average: 1.16
+  min:     1
+  max:     9
+T gate failures: 2990/5966 (50.1%)
+Steiner tree computation called 3712 times
+A* computation called 2255 times
+Timing: Scheduler::sched_circuit took 0.15 s
+Scheduled 5966 in 3684 logical cycles, volume 909948
+Parallelism: 1.619x
+Max parallelism estimate: 2.430
+Volume estimate: 909701
+Normalized scheduling efficiency: 1.000
+Scheduled products written to qugan_n71.schedule
+Timing: Scheduler::print_schedule took 0.01 s
+Accumulated timings (ms):
+  schedule loop             total:   124.5 ms  avg:   33.79 μs  max:  130.46 μs  calls: 3684
+  other                     total:    38.5 ms  avg:   10.44 μs  max:   82.13 μs  calls: 3684
+  schedule_lcycle           total:    94.5 ms  avg:   25.66 μs  max:  101.48 μs  calls: 3684
+  update_cultivators        total:    10.8 ms  avg:    2.93 μs  max:   44.14 μs  calls: 3684
+  sched_precomputed         total:     6.4 ms  avg:    1.75 μs  max:   13.48 μs  calls: 3684
+  sched_remaining           total:    37.1 ms  avg:   10.08 μs  max:   84.72 μs  calls: 3684
+  complete_lcycle           total:     9.1 ms  avg:    2.47 μs  max:  101.83 μs  calls: 3684
+Timing: main took 0.18 s

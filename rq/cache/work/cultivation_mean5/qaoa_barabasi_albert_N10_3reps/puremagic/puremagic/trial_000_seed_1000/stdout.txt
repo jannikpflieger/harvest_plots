@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "qaoa_barabasi_albert_N10_3reps.trans",
+        rseed: 1000,
+        magic_state_lambda: 0.2,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 2070 products and 10 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               2070
+  Number of Cliffords:              0
+  Layers:                           2029
+  Products per layer:               1.02 avg, 9 max
+Generated topology with dimensions: 7 7
+Number of qubits:
+  data:         10 (0.204)
+  bus:          0 (0.000)
+  magic:        39 (0.796)
+  total:        49
+Precomputed terminals and root candidates for 2070 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.685
+  bus:         NaN
+  magic:       0.273
+Magic unused 0.549
+Magic state cultivation time:
+  number:  3036
+  average: 2.41
+  min:     1
+  max:     34
+T gate failures: 995/2070 (48.1%)
+Steiner tree computation called 1932 times
+A* computation called 138 times
+Timing: Scheduler::sched_circuit took 0.07 s
+Scheduled 2070 in 2041 logical cycles, volume 100009
+Parallelism: 1.014x
+Max parallelism estimate: 1.530
+Volume estimate: 99421
+Normalized scheduling efficiency: 0.994
+Scheduled products written to qaoa_barabasi_albert_N10_3reps.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:    60.6 ms  avg:   29.69 μs  max:  123.41 μs  calls: 2041
+  other                     total:    18.9 ms  avg:    9.28 μs  max:   46.44 μs  calls: 2041
+  schedule_lcycle           total:    45.1 ms  avg:   22.12 μs  max:   78.99 μs  calls: 2041
+  update_cultivators        total:     4.4 ms  avg:    2.14 μs  max:   18.16 μs  calls: 2041
+  sched_precomputed         total:     3.5 ms  avg:    1.71 μs  max:   37.99 μs  calls: 2041
+  sched_remaining           total:    15.9 ms  avg:    7.79 μs  max:   38.13 μs  calls: 2041
+  complete_lcycle           total:     4.7 ms  avg:    2.29 μs  max:   97.71 μs  calls: 2041
+Timing: main took 0.08 s

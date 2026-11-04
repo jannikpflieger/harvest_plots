@@ -1,0 +1,7 @@
+model,baseline,circuits,families,median_qubits,median_pauli_products,median_parallelism,causes,median_volume_ratio,status
+cultivation,EAF,1,simon 1,6.0,14.0,1.4,area 1,0.9897435897435898,ok
+cultivation,Litinski,2,quantumwalks 1; dnn 1,2.0,202.5,1.2269343559666142,area 2,0.9837702648934389,ok
+cultivation,PureMagic,30,ising 15; knn 4; qft 3; swap_test 3; qaoa 2; dnn 1; quantumwalks 1; multiplier 1,54.0,2134.5,10.911575814536342,makespan 23; area 7,0.8371841000794515,ok
+cultivation_pm,PureMagic,13,ising 11; wstate 2,416.0,22913.0,47.735416666666666,makespan 11; area 2,0.2482198398717764,ok
+instant,Litinski,16,qft 7; qaoa 4; vqe_uccsd 1; pea 1; basis_change 1; qpe 1; qf 1,14.5,3812.0,1.0163225564546368,area 16,0.9605554361993509,ok
+instant,PureMagic,14,ising 12; swap_test 1; knn 1,414.0,22804.0,47.50833333333333,makespan 14,0.7134764438751684,ok

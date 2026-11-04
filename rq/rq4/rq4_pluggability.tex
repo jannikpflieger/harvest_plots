@@ -1,0 +1,12 @@
+\begin{tabular}{llrcr}
+\toprule
+Model & Implementation & LoC & restr.\ stable & valid schedules \\
+\midrule
+instant & none (no source: every terminal always ready) & 0 & yes & 310/310 \\
+dist4 & MagicStateFactory (fixed latency mu) & 77 & yes & 310/310 \\
+dist10 & MagicStateFactory (fixed latency mu) & 77 & yes & 310/310 \\
+cultivation & MagicStateCultivator + exponential_sampler & 125 & yes & 930/930 \\
+lognormal & MagicStateCultivator + lognormal_sampler (new for this paper) & 9 & yes & 930/930 \\
+multiplexed & MultiplexedCultivator (new for this paper) & 52 & yes & 930/930 \\
+\bottomrule
+\end{tabular}

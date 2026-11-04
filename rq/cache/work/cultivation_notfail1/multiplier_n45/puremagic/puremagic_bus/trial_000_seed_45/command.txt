@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit multiplier_n45.trans --magic-state-lambda 0.3333333333333333 --rseed 45 --ancilla-rows 1 --no-t-failures

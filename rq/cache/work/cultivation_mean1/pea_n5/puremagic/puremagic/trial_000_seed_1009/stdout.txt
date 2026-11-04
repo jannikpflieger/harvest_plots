@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "pea_n5.trans",
+        rseed: 1009,
+        magic_state_lambda: 1.0,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 258 products and 5 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               258
+  Number of Cliffords:              0
+  Layers:                           254
+  Products per layer:               1.02 avg, 2 max
+Generated topology with dimensions: 7 4
+Number of qubits:
+  data:         6 (0.214)
+  bus:          0 (0.000)
+  magic:        22 (0.786)
+  total:        28
+Precomputed terminals and root candidates for 258 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.553
+  bus:         NaN
+  magic:       0.266
+Magic unused 0.745
+Magic state cultivation time:
+  number:  386
+  average: 1.14
+  min:     1
+  max:     5
+T gate failures: 138/258 (53.5%)
+Steiner tree computation called 229 times
+A* computation called 29 times
+Timing: Scheduler::sched_circuit took 0.01 s
+Scheduled 258 in 256 logical cycles, volume 7168
+Parallelism: 1.008x
+Max parallelism estimate: 1.524
+Volume estimate: 7112
+Normalized scheduling efficiency: 0.992
+Scheduled products written to pea_n5.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     6.4 ms  avg:   25.03 μs  max:   37.09 μs  calls: 256
+  other                     total:     2.2 ms  avg:    8.59 μs  max:   20.11 μs  calls: 256
+  schedule_lcycle           total:     4.6 ms  avg:   17.81 μs  max:   30.31 μs  calls: 256
+  update_cultivators        total:  481.63 μs  avg:    1.88 μs  max:    3.28 μs  calls: 256
+  sched_precomputed         total:  434.39 μs  avg:    1.70 μs  max:   10.06 μs  calls: 256
+  sched_remaining           total:     1.1 ms  avg:    4.32 μs  max:    8.10 μs  calls: 256
+  complete_lcycle           total:  535.26 μs  avg:    2.09 μs  max:   13.34 μs  calls: 256
+Timing: main took 0.01 s

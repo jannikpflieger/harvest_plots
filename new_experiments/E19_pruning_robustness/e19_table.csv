@@ -1,0 +1,7 @@
+metric,n,geomean,wins,ties,losses,p10,p90
+makespan: pruned layout / full layout,47,1.0000009583840879,0.0,47.0,0.0,1.0,1.0
+volume: fixed pruned layout / full layout pruned per seed,47,1.0007616351452226,1.0,44.0,2.0,1.0,1.0
+volume: fixed pruned layout / full layout unpruned,47,0.9828648681994299,15.0,32.0,0.0,0.9388888888888889,1.0
+"share of (circuit, seed) with makespan +>1%",470,0.0,,,,,
+"max makespan ratio over (circuit, seed)",470,1.0004504504504506,,,,,
+median per-circuit CV of fixed-layout volume over seeds B,47,0.0075691259291572775,,,,,

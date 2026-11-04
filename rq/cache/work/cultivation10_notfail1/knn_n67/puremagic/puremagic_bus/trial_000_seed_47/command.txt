@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit knn_n67.trans --magic-state-lambda 0.1 --rseed 47 --ancilla-rows 1 --no-t-failures

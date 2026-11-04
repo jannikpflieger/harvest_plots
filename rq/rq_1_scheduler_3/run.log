@@ -1,0 +1,299 @@
+2026-10-30 09:08:42,033 INFO rq_1_scheduler_3: 188 task(s), 0 already done, 188 to run with 3 worker(s)
+2026-10-30 09:08:43,558 INFO done 1 (187 left, 2 s): rq_1_scheduler_3|qaoa_n3|harvest3|auto|instant|
+2026-10-30 09:08:43,594 INFO done 2 (186 left, 2 s): rq_1_scheduler_3|qaoa_n3|harvest3|auto|cultivation|43
+2026-10-30 09:08:43,616 INFO done 3 (185 left, 2 s): rq_1_scheduler_3|qaoa_n3|harvest3|auto|cultivation|42
+2026-10-30 09:08:43,707 INFO done 4 (184 left, 2 s): rq_1_scheduler_3|qaoa_n3|harvest3|auto|cultivation|44
+2026-10-30 09:08:43,710 INFO done 5 (183 left, 2 s): rq_1_scheduler_3|quantumwalks_n2|harvest3|auto|instant|
+2026-10-30 09:08:43,813 INFO done 6 (182 left, 2 s): rq_1_scheduler_3|quantumwalks_n2|harvest3|auto|cultivation|42
+2026-10-30 09:08:43,966 INFO done 7 (181 left, 2 s): rq_1_scheduler_3|quantumwalks_n2|harvest3|auto|cultivation|44
+2026-10-30 09:08:44,028 INFO done 8 (180 left, 2 s): rq_1_scheduler_3|quantumwalks_n2|harvest3|auto|cultivation|43
+2026-10-30 09:08:44,126 INFO done 9 (179 left, 2 s): rq_1_scheduler_3|qft_N004|harvest3|auto|instant|
+2026-10-30 09:08:44,461 INFO done 10 (178 left, 2 s): rq_1_scheduler_3|qft_N004|harvest3|auto|cultivation|42
+2026-10-30 09:08:44,525 INFO done 11 (177 left, 2 s): rq_1_scheduler_3|qft_N004|harvest3|auto|cultivation|43
+2026-10-30 09:08:44,641 INFO done 12 (176 left, 3 s): rq_1_scheduler_3|qft_N004|harvest3|auto|cultivation|44
+2026-10-30 09:08:44,717 INFO done 13 (175 left, 3 s): rq_1_scheduler_3|dnn_n2|harvest3|auto|instant|
+2026-10-30 09:08:44,942 INFO done 14 (174 left, 3 s): rq_1_scheduler_3|dnn_n2|harvest3|auto|cultivation|42
+2026-10-30 09:08:45,031 INFO done 15 (173 left, 3 s): rq_1_scheduler_3|dnn_n2|harvest3|auto|cultivation|44
+2026-10-30 09:08:45,187 INFO done 16 (172 left, 3 s): rq_1_scheduler_3|dnn_n2|harvest3|auto|cultivation|43
+2026-10-30 09:08:45,197 INFO done 17 (171 left, 3 s): rq_1_scheduler_3|bigadder_n18|harvest3|auto|instant|
+2026-10-30 09:08:45,685 INFO done 18 (170 left, 4 s): rq_1_scheduler_3|bigadder_n18|harvest3|auto|cultivation|42
+2026-10-30 09:08:45,722 INFO done 19 (169 left, 4 s): rq_1_scheduler_3|bigadder_n18|harvest3|auto|cultivation|44
+2026-10-30 09:08:45,734 INFO done 20 (168 left, 4 s): rq_1_scheduler_3|bigadder_n18|harvest3|auto|cultivation|43
+2026-10-30 09:08:45,932 INFO done 21 (167 left, 4 s): rq_1_scheduler_3|variational_n4|harvest3|auto|instant|
+2026-10-30 09:08:46,134 INFO done 22 (166 left, 4 s): rq_1_scheduler_3|variational_n4|harvest3|auto|cultivation|42
+2026-10-30 09:08:46,240 INFO done 23 (165 left, 4 s): rq_1_scheduler_3|variational_n4|harvest3|auto|cultivation|43
+2026-10-30 09:08:46,334 INFO done 24 (164 left, 4 s): rq_1_scheduler_3|variational_n4|harvest3|auto|cultivation|44
+2026-10-30 09:08:46,424 INFO done 25 (163 left, 4 s): rq_1_scheduler_3|pea_n5|harvest3|auto|instant|
+2026-10-30 09:08:46,568 INFO done 26 (162 left, 5 s): rq_1_scheduler_3|pea_n5|harvest3|auto|cultivation|42
+2026-10-30 09:08:46,724 INFO done 27 (161 left, 5 s): rq_1_scheduler_3|pea_n5|harvest3|auto|cultivation|43
+2026-10-30 09:08:46,784 INFO done 28 (160 left, 5 s): rq_1_scheduler_3|pea_n5|harvest3|auto|cultivation|44
+2026-10-30 09:08:47,042 INFO done 29 (159 left, 5 s): rq_1_scheduler_3|qram_n20|harvest3|auto|instant|
+2026-10-30 09:08:47,300 INFO done 30 (158 left, 5 s): rq_1_scheduler_3|qram_n20|harvest3|auto|cultivation|42
+2026-10-30 09:08:47,323 INFO done 31 (157 left, 5 s): rq_1_scheduler_3|qram_n20|harvest3|auto|cultivation|43
+2026-10-30 09:08:47,652 INFO done 32 (156 left, 6 s): rq_1_scheduler_3|qram_n20|harvest3|auto|cultivation|44
+2026-10-30 09:08:48,094 INFO done 33 (155 left, 6 s): rq_1_scheduler_3|vqe_n4|harvest3|auto|instant|
+2026-10-30 09:08:48,478 INFO done 34 (154 left, 6 s): rq_1_scheduler_3|vqe_n4|harvest3|auto|cultivation|42
+2026-10-30 09:08:48,809 INFO done 35 (153 left, 7 s): rq_1_scheduler_3|vqe_n4|harvest3|auto|cultivation|43
+2026-10-30 09:08:49,232 INFO done 36 (152 left, 7 s): rq_1_scheduler_3|sat_n11|harvest3|auto|instant|
+2026-10-30 09:08:49,348 INFO done 37 (151 left, 7 s): rq_1_scheduler_3|vqe_n4|harvest3|auto|cultivation|44
+2026-10-30 09:08:49,725 INFO done 38 (150 left, 8 s): rq_1_scheduler_3|sat_n11|harvest3|auto|cultivation|42
+2026-10-30 09:08:50,179 INFO done 39 (149 left, 8 s): rq_1_scheduler_3|sat_n11|harvest3|auto|cultivation|43
+2026-10-30 09:08:50,271 INFO done 40 (148 left, 8 s): rq_1_scheduler_3|sat_n11|harvest3|auto|cultivation|44
+2026-10-30 09:08:51,201 INFO done 41 (147 left, 9 s): rq_1_scheduler_3|multiplier_n15|harvest3|auto|instant|
+2026-10-30 09:08:51,595 INFO done 42 (146 left, 10 s): rq_1_scheduler_3|multiplier_n15|harvest3|auto|cultivation|42
+2026-10-30 09:08:51,713 INFO done 43 (145 left, 10 s): rq_1_scheduler_3|multiplier_n15|harvest3|auto|cultivation|43
+2026-10-30 09:08:52,545 INFO done 44 (144 left, 11 s): rq_1_scheduler_3|adder_n28|harvest3|auto|instant|
+2026-10-30 09:08:52,623 INFO done 45 (143 left, 11 s): rq_1_scheduler_3|multiplier_n15|harvest3|auto|cultivation|44
+2026-10-30 09:08:52,967 INFO done 46 (142 left, 11 s): rq_1_scheduler_3|adder_n28|harvest3|auto|cultivation|42
+2026-10-30 09:08:53,558 INFO done 47 (141 left, 12 s): rq_1_scheduler_3|square_heisenberg_N4|harvest3|auto|instant|
+2026-10-30 09:08:53,769 INFO done 48 (140 left, 12 s): rq_1_scheduler_3|adder_n28|harvest3|auto|cultivation|44
+2026-10-30 09:08:54,005 INFO done 49 (139 left, 12 s): rq_1_scheduler_3|adder_n28|harvest3|auto|cultivation|43
+2026-10-30 09:08:54,646 INFO done 50 (138 left, 13 s): rq_1_scheduler_3|square_heisenberg_N4|harvest3|auto|cultivation|42
+2026-10-30 09:08:54,853 INFO done 51 (137 left, 13 s): rq_1_scheduler_3|square_heisenberg_N4|harvest3|auto|cultivation|43
+2026-10-30 09:08:55,131 INFO done 52 (136 left, 13 s): rq_1_scheduler_3|square_heisenberg_N4|harvest3|auto|cultivation|44
+2026-10-30 09:08:55,193 INFO done 53 (135 left, 13 s): rq_1_scheduler_3|basis_change_n3|harvest3|auto|instant|
+2026-10-30 09:08:56,126 INFO done 54 (134 left, 14 s): rq_1_scheduler_3|basis_change_n3|harvest3|auto|cultivation|42
+2026-10-30 09:08:56,448 INFO done 55 (133 left, 14 s): rq_1_scheduler_3|basis_change_n3|harvest3|auto|cultivation|43
+2026-10-30 09:08:56,497 INFO done 56 (132 left, 14 s): rq_1_scheduler_3|basis_change_n3|harvest3|auto|cultivation|44
+2026-10-30 09:08:56,903 INFO done 57 (131 left, 15 s): rq_1_scheduler_3|vqe_uccsd_n4|harvest3|auto|instant|
+2026-10-30 09:08:57,665 INFO done 58 (130 left, 16 s): rq_1_scheduler_3|vqe_uccsd_n4|harvest3|auto|cultivation|42
+2026-10-30 09:08:57,906 INFO done 59 (129 left, 16 s): rq_1_scheduler_3|vqe_uccsd_n4|harvest3|auto|cultivation|43
+2026-10-30 09:08:57,933 INFO done 60 (128 left, 16 s): rq_1_scheduler_3|vqe_uccsd_n4|harvest3|auto|cultivation|44
+2026-10-30 09:08:58,408 INFO done 61 (127 left, 16 s): rq_1_scheduler_3|qpe_n9|harvest3|auto|instant|
+2026-10-30 09:08:59,387 INFO done 62 (126 left, 17 s): rq_1_scheduler_3|qpe_n9|harvest3|auto|cultivation|43
+2026-10-30 09:08:59,561 INFO done 63 (125 left, 18 s): rq_1_scheduler_3|qpe_n9|harvest3|auto|cultivation|42
+2026-10-30 09:08:59,886 INFO done 64 (124 left, 18 s): rq_1_scheduler_3|qpe_n9|harvest3|auto|cultivation|44
+2026-10-30 09:09:02,064 INFO done 65 (123 left, 20 s): rq_1_scheduler_3|knn_n25|harvest3|auto|instant|
+2026-10-30 09:09:02,589 INFO done 66 (122 left, 21 s): rq_1_scheduler_3|knn_n25|harvest3|auto|cultivation|42
+2026-10-30 09:09:03,010 INFO done 67 (121 left, 21 s): rq_1_scheduler_3|knn_n25|harvest3|auto|cultivation|43
+2026-10-30 09:09:04,938 INFO done 68 (120 left, 23 s): rq_1_scheduler_3|knn_n25|harvest3|auto|cultivation|44
+2026-10-30 09:09:05,564 INFO done 69 (119 left, 24 s): rq_1_scheduler_3|swap_test_n25|harvest3|auto|instant|
+2026-10-30 09:09:06,059 INFO done 70 (118 left, 24 s): rq_1_scheduler_3|swap_test_n25|harvest3|auto|cultivation|42
+2026-10-30 09:09:07,893 INFO done 71 (117 left, 26 s): rq_1_scheduler_3|swap_test_n25|harvest3|auto|cultivation|43
+2026-10-30 09:09:08,895 INFO done 72 (116 left, 27 s): rq_1_scheduler_3|swap_test_n25|harvest3|auto|cultivation|44
+2026-10-30 09:09:11,635 INFO done 73 (115 left, 30 s): rq_1_scheduler_3|adder_n64|harvest3|auto|instant|
+2026-10-30 09:09:14,014 INFO done 74 (114 left, 32 s): rq_1_scheduler_3|adder_n64|harvest3|auto|cultivation|42
+2026-10-30 09:09:16,127 INFO done 75 (113 left, 34 s): rq_1_scheduler_3|adder_n64|harvest3|auto|cultivation|43
+2026-10-30 09:09:17,485 INFO done 76 (112 left, 35 s): rq_1_scheduler_3|qf21_n15|harvest3|auto|instant|
+2026-10-30 09:09:19,230 INFO done 77 (111 left, 37 s): rq_1_scheduler_3|adder_n64|harvest3|auto|cultivation|44
+2026-10-30 09:09:22,308 INFO done 78 (110 left, 40 s): rq_1_scheduler_3|qf21_n15|harvest3|auto|cultivation|42
+2026-10-30 09:09:25,071 INFO done 79 (109 left, 43 s): rq_1_scheduler_3|qf21_n15|harvest3|auto|cultivation|43
+2026-10-30 09:09:25,334 INFO done 80 (108 left, 43 s): rq_1_scheduler_3|qf21_n15|harvest3|auto|cultivation|44
+2026-10-30 09:09:27,206 INFO done 81 (107 left, 45 s): rq_1_scheduler_3|hhl_n7|harvest3|auto|instant|
+2026-10-30 09:09:34,551 INFO done 82 (106 left, 53 s): rq_1_scheduler_3|hhl_n7|harvest3|auto|cultivation|43
+2026-10-30 09:09:35,090 INFO done 83 (105 left, 53 s): rq_1_scheduler_3|hhl_n7|harvest3|auto|cultivation|42
+2026-10-30 09:09:36,512 INFO done 84 (104 left, 54 s): rq_1_scheduler_3|hhl_n7|harvest3|auto|cultivation|44
+2026-10-30 09:09:40,175 INFO done 85 (103 left, 58 s): rq_1_scheduler_3|qaoa_barabasi_albert_N10_3reps|harvest3|auto|instant|
+2026-10-30 09:09:47,449 INFO done 86 (102 left, 65 s): rq_1_scheduler_3|qaoa_barabasi_albert_N10_3reps|harvest3|auto|cultivation|42
+2026-10-30 09:09:48,800 INFO done 87 (101 left, 67 s): rq_1_scheduler_3|qaoa_barabasi_albert_N10_3reps|harvest3|auto|cultivation|43
+2026-10-30 09:09:51,645 INFO done 88 (100 left, 70 s): rq_1_scheduler_3|qaoa_barabasi_albert_N10_3reps|harvest3|auto|cultivation|44
+2026-10-30 09:09:55,554 INFO done 89 (99 left, 74 s): rq_1_scheduler_3|ising_n26|harvest3|auto|instant|
+2026-10-30 09:09:59,038 INFO done 90 (98 left, 77 s): rq_1_scheduler_3|ising_n26|harvest3|auto|cultivation|42
+2026-10-30 09:10:01,156 INFO done 91 (97 left, 79 s): rq_1_scheduler_3|ising_n26|harvest3|auto|cultivation|43
+2026-10-30 09:10:04,698 INFO done 92 (96 left, 83 s): rq_1_scheduler_3|ising_n26|harvest3|auto|cultivation|44
+2026-10-30 09:10:05,259 INFO done 93 (95 left, 83 s): rq_1_scheduler_3|wstate_n27|harvest3|auto|instant|
+2026-10-30 09:10:07,245 INFO done 94 (94 left, 85 s): rq_1_scheduler_3|wstate_n27|harvest3|auto|cultivation|42
+2026-10-30 09:10:12,479 INFO done 95 (93 left, 90 s): rq_1_scheduler_3|wstate_n27|harvest3|auto|cultivation|44
+2026-10-30 09:10:13,222 INFO done 96 (92 left, 91 s): rq_1_scheduler_3|wstate_n27|harvest3|auto|cultivation|43
+2026-10-30 09:10:17,780 INFO done 97 (91 left, 96 s): rq_1_scheduler_3|qft_N014|harvest3|auto|instant|
+2026-10-30 09:10:25,121 INFO done 98 (90 left, 103 s): rq_1_scheduler_3|qft_N014|harvest3|auto|cultivation|43
+2026-10-30 09:10:25,614 INFO done 99 (89 left, 104 s): rq_1_scheduler_3|qft_N014|harvest3|auto|cultivation|42
+2026-10-30 09:10:30,933 INFO done 100 (88 left, 109 s): rq_1_scheduler_3|qft_N014|harvest3|auto|cultivation|44
+2026-10-30 09:10:33,335 INFO done 101 (87 left, 111 s): rq_1_scheduler_3|knn_n41|harvest3|auto|instant|
+2026-10-30 09:10:34,819 INFO done 102 (86 left, 113 s): rq_1_scheduler_3|knn_n41|harvest3|auto|cultivation|42
+2026-10-30 09:10:39,787 INFO done 103 (85 left, 118 s): rq_1_scheduler_3|knn_n41|harvest3|auto|cultivation|43
+2026-10-30 09:10:42,185 INFO done 104 (84 left, 120 s): rq_1_scheduler_3|knn_n41|harvest3|auto|cultivation|44
+2026-10-30 09:10:43,140 INFO done 105 (83 left, 121 s): rq_1_scheduler_3|swap_test_n41|harvest3|auto|instant|
+2026-10-30 09:10:48,970 INFO done 106 (82 left, 127 s): rq_1_scheduler_3|swap_test_n41|harvest3|auto|cultivation|42
+2026-10-30 09:10:51,305 INFO done 107 (81 left, 129 s): rq_1_scheduler_3|swap_test_n41|harvest3|auto|cultivation|43
+2026-10-30 09:10:52,566 INFO done 108 (80 left, 131 s): rq_1_scheduler_3|swap_test_n41|harvest3|auto|cultivation|44
+2026-10-30 09:10:58,531 INFO done 109 (79 left, 136 s): rq_1_scheduler_3|square_heisenberg_N16|harvest3|auto|instant|
+2026-10-30 09:11:03,317 INFO done 110 (78 left, 141 s): rq_1_scheduler_3|square_heisenberg_N16|harvest3|auto|cultivation|42
+2026-10-30 09:11:04,489 INFO done 111 (77 left, 142 s): rq_1_scheduler_3|square_heisenberg_N16|harvest3|auto|cultivation|43
+2026-10-30 09:11:09,898 INFO done 112 (76 left, 148 s): rq_1_scheduler_3|square_heisenberg_N16|harvest3|auto|cultivation|44
+2026-10-30 09:11:10,833 INFO done 113 (75 left, 149 s): rq_1_scheduler_3|vqe_uccsd_n6|harvest3|auto|instant|
+2026-10-30 09:11:20,638 INFO done 114 (74 left, 159 s): rq_1_scheduler_3|vqe_uccsd_n6|harvest3|auto|cultivation|42
+2026-10-30 09:11:26,368 INFO done 115 (73 left, 164 s): rq_1_scheduler_3|vqe_uccsd_n6|harvest3|auto|cultivation|43
+2026-10-30 09:11:26,910 INFO done 116 (72 left, 165 s): rq_1_scheduler_3|vqe_uccsd_n6|harvest3|auto|cultivation|44
+2026-10-30 09:11:32,908 INFO done 117 (71 left, 171 s): rq_1_scheduler_3|ising_n10|harvest3|auto|instant|
+2026-10-30 09:11:43,746 INFO done 118 (70 left, 182 s): rq_1_scheduler_3|ising_n10|harvest3|auto|cultivation|42
+2026-10-30 09:11:45,534 INFO done 119 (69 left, 184 s): rq_1_scheduler_3|ising_n10|harvest3|auto|cultivation|43
+2026-10-30 09:11:51,509 INFO done 120 (68 left, 189 s): rq_1_scheduler_3|ising_n10|harvest3|auto|cultivation|44
+2026-10-30 09:11:58,833 INFO done 121 (67 left, 197 s): rq_1_scheduler_3|ising_n34|harvest3|auto|instant|
+2026-10-30 09:11:59,420 INFO done 122 (66 left, 197 s): rq_1_scheduler_3|ising_n34|harvest3|auto|cultivation|42
+2026-10-30 09:12:04,584 INFO done 123 (65 left, 203 s): rq_1_scheduler_3|ising_n34|harvest3|auto|cultivation|43
+2026-10-30 09:12:10,242 INFO done 124 (64 left, 208 s): rq_1_scheduler_3|basis_trotter_n4|harvest3|auto|instant|
+2026-10-30 09:12:11,134 INFO done 125 (63 left, 209 s): rq_1_scheduler_3|ising_n34|harvest3|auto|cultivation|44
+2026-10-30 09:12:24,389 INFO done 126 (62 left, 222 s): rq_1_scheduler_3|basis_trotter_n4|harvest3|auto|cultivation|42
+2026-10-30 09:12:30,289 INFO done 127 (61 left, 228 s): rq_1_scheduler_3|basis_trotter_n4|harvest3|auto|cultivation|43
+2026-10-30 09:12:31,869 INFO done 128 (60 left, 230 s): rq_1_scheduler_3|basis_trotter_n4|harvest3|auto|cultivation|44
+2026-10-30 09:12:34,659 INFO done 129 (59 left, 233 s): rq_1_scheduler_3|wstate_n36|harvest3|auto|instant|
+2026-10-30 09:12:43,537 INFO done 130 (58 left, 242 s): rq_1_scheduler_3|wstate_n36|harvest3|auto|cultivation|42
+2026-10-30 09:12:45,036 INFO done 131 (57 left, 243 s): rq_1_scheduler_3|wstate_n36|harvest3|auto|cultivation|43
+2026-10-30 09:12:47,065 INFO done 132 (56 left, 245 s): rq_1_scheduler_3|wstate_n36|harvest3|auto|cultivation|44
+2026-10-30 09:13:02,311 INFO done 133 (55 left, 260 s): rq_1_scheduler_3|ising_n42|harvest3|auto|instant|
+2026-10-30 09:13:02,634 INFO done 134 (54 left, 261 s): rq_1_scheduler_3|ising_n42|harvest3|auto|cultivation|42
+2026-10-30 09:13:05,172 INFO done 135 (53 left, 263 s): rq_1_scheduler_3|ising_n42|harvest3|auto|cultivation|43
+2026-10-30 09:13:20,021 INFO done 136 (52 left, 278 s): rq_1_scheduler_3|ising_n42|harvest3|auto|cultivation|44
+2026-10-30 09:13:32,673 INFO done 137 (51 left, 291 s): rq_1_scheduler_3|dnn_n33|harvest3|auto|instant|
+2026-10-30 09:13:45,507 INFO done 138 (50 left, 303 s): rq_1_scheduler_3|dnn_n33|harvest3|auto|cultivation|42
+2026-10-30 09:13:57,082 INFO done 139 (49 left, 315 s): rq_1_scheduler_3|dnn_n33|harvest3|auto|cultivation|43
+2026-10-30 09:14:04,039 INFO done 140 (48 left, 322 s): rq_1_scheduler_3|multiplier_n45|harvest3|auto|instant|
+2026-10-30 09:14:08,053 INFO done 141 (47 left, 326 s): rq_1_scheduler_3|dnn_n33|harvest3|auto|cultivation|44
+2026-10-30 09:14:17,798 INFO done 142 (46 left, 336 s): rq_1_scheduler_3|multiplier_n45|harvest3|auto|cultivation|42
+2026-10-30 09:14:24,550 INFO done 143 (45 left, 343 s): rq_1_scheduler_3|multiplier_n45|harvest3|auto|cultivation|43
+2026-10-30 09:14:28,018 INFO done 144 (44 left, 346 s): rq_1_scheduler_3|multiplier_n45|harvest3|auto|cultivation|44
+2026-10-30 09:14:44,167 INFO done 145 (43 left, 362 s): rq_1_scheduler_3|square_heisenberg_N25|harvest3|auto|instant|
+2026-10-30 09:14:53,776 INFO done 146 (42 left, 372 s): rq_1_scheduler_3|square_heisenberg_N25|harvest3|auto|cultivation|42
+2026-10-30 09:14:57,318 INFO done 147 (41 left, 375 s): rq_1_scheduler_3|square_heisenberg_N25|harvest3|auto|cultivation|43
+2026-10-30 09:15:13,098 INFO done 148 (40 left, 391 s): rq_1_scheduler_3|square_heisenberg_N25|harvest3|auto|cultivation|44
+2026-10-30 09:15:15,618 INFO done 149 (39 left, 394 s): rq_1_scheduler_3|qugan_n39|harvest3|auto|instant|
+2026-10-30 09:15:15,698 INFO done 150 (38 left, 394 s): rq_1_scheduler_3|qugan_n39|harvest3|auto|cultivation|42
+2026-10-30 09:15:30,813 INFO done 151 (37 left, 409 s): rq_1_scheduler_3|qugan_n39|harvest3|auto|cultivation|43
+2026-10-30 09:15:34,158 INFO done 152 (36 left, 412 s): rq_1_scheduler_3|qugan_n39|harvest3|auto|cultivation|44
+2026-10-30 09:15:35,021 INFO done 153 (35 left, 413 s): rq_1_scheduler_3|knn_n67|harvest3|auto|instant|
+2026-10-30 09:15:47,030 INFO done 154 (34 left, 425 s): rq_1_scheduler_3|knn_n67|harvest3|auto|cultivation|42
+2026-10-30 09:15:49,332 INFO done 155 (33 left, 427 s): rq_1_scheduler_3|knn_n67|harvest3|auto|cultivation|43
+2026-10-30 09:15:51,090 INFO done 156 (32 left, 429 s): rq_1_scheduler_3|knn_n67|harvest3|auto|cultivation|44
+2026-10-30 09:16:17,240 INFO done 157 (31 left, 455 s): rq_1_scheduler_3|qaoa_barabasi_albert_N24_3reps|harvest3|auto|instant|
+2026-10-30 09:16:44,535 INFO done 158 (30 left, 483 s): rq_1_scheduler_3|qaoa_barabasi_albert_N24_3reps|harvest3|auto|cultivation|42
+2026-10-30 09:16:47,032 INFO done 159 (29 left, 485 s): rq_1_scheduler_3|qaoa_barabasi_albert_N24_3reps|harvest3|auto|cultivation|43
+2026-10-30 09:17:10,380 INFO done 160 (28 left, 508 s): rq_1_scheduler_3|qft_n29|harvest3|auto|instant|
+2026-10-30 09:17:11,232 INFO done 161 (27 left, 509 s): rq_1_scheduler_3|qaoa_barabasi_albert_N24_3reps|harvest3|auto|cultivation|44
+2026-10-30 09:17:37,984 INFO done 162 (26 left, 536 s): rq_1_scheduler_3|qft_n29|harvest3|auto|cultivation|42
+2026-10-30 09:18:04,029 INFO done 163 (25 left, 562 s): rq_1_scheduler_3|qft_n29|harvest3|auto|cultivation|43
+2026-10-30 09:18:04,906 INFO done 164 (24 left, 563 s): rq_1_scheduler_3|qft_n29|harvest3|auto|cultivation|44
+2026-10-30 09:18:07,923 INFO done 165 (23 left, 566 s): rq_1_scheduler_3|swap_test_n83|harvest3|auto|instant|
+2026-10-30 09:18:19,088 INFO maxp pruned
+2026-10-30 09:18:19,097 INFO cmap pruned
+2026-10-30 09:18:19,098 INFO kern dropped
+2026-10-30 09:18:19,098 INFO post pruned
+2026-10-30 09:18:19,098 INFO FFTM dropped
+2026-10-30 09:18:19,100 INFO GPOS pruned
+2026-10-30 09:18:19,103 INFO GSUB pruned
+2026-10-30 09:18:19,166 INFO glyf pruned
+2026-10-30 09:18:19,167 INFO Added gid0 to subset
+2026-10-30 09:18:19,167 INFO Added first four glyphs to subset
+2026-10-30 09:18:19,168 INFO Closing glyph list over 'MATH': 56 glyphs before
+2026-10-30 09:18:19,168 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'zero']
+2026-10-30 09:18:19,169 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153]
+2026-10-30 09:18:19,170 INFO Closed glyph list over 'MATH': 68 glyphs after
+2026-10-30 09:18:19,170 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:18:19,170 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:18:19,170 INFO Closing glyph list over 'GSUB': 68 glyphs before
+2026-10-30 09:18:19,170 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:18:19,171 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:18:19,173 INFO Closed glyph list over 'GSUB': 68 glyphs after
+2026-10-30 09:18:19,173 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:18:19,173 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:18:19,174 INFO Closing glyph list over 'glyf': 68 glyphs before
+2026-10-30 09:18:19,174 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:18:19,174 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:18:19,174 INFO Closed glyph list over 'glyf': 68 glyphs after
+2026-10-30 09:18:19,174 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:18:19,174 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:18:19,175 INFO Retaining 68 glyphs
+2026-10-30 09:18:19,175 INFO head subsetting not needed
+2026-10-30 09:18:19,175 INFO hhea subsetting not needed
+2026-10-30 09:18:19,175 INFO maxp subsetting not needed
+2026-10-30 09:18:19,175 INFO OS/2 subsetting not needed
+2026-10-30 09:18:19,178 INFO hmtx subsetted
+2026-10-30 09:18:19,180 INFO cmap subsetted
+2026-10-30 09:18:19,180 INFO fpgm subsetting not needed
+2026-10-30 09:18:19,180 INFO prep subsetting not needed
+2026-10-30 09:18:19,180 INFO cvt  subsetting not needed
+2026-10-30 09:18:19,180 INFO loca subsetting not needed
+2026-10-30 09:18:19,180 INFO post subsetted
+2026-10-30 09:18:19,180 INFO gasp subsetting not needed
+2026-10-30 09:18:19,181 INFO MATH subsetted
+2026-10-30 09:18:19,182 INFO GDEF subsetted
+2026-10-30 09:18:19,199 INFO GPOS subsetted
+2026-10-30 09:18:19,201 INFO GSUB subsetted
+2026-10-30 09:18:19,201 INFO name subsetting not needed
+2026-10-30 09:18:19,202 INFO glyf subsetted
+2026-10-30 09:18:19,202 INFO head pruned
+2026-10-30 09:18:19,203 INFO OS/2 Unicode ranges pruned: [0, 1]
+2026-10-30 09:18:19,203 INFO OS/2 CodePage ranges pruned: [0]
+2026-10-30 09:18:19,204 INFO glyf pruned
+2026-10-30 09:18:19,204 INFO GDEF pruned
+2026-10-30 09:18:19,204 INFO GPOS pruned
+2026-10-30 09:18:19,205 INFO GSUB pruned
+2026-10-30 09:18:19,212 INFO name pruned
+2026-10-30 09:18:27,988 INFO done 166 (22 left, 586 s): rq_1_scheduler_3|swap_test_n83|harvest3|auto|cultivation|42
+2026-10-30 09:18:33,742 INFO done 167 (21 left, 592 s): rq_1_scheduler_3|swap_test_n83|harvest3|auto|cultivation|43
+2026-10-30 09:18:36,296 INFO done 168 (20 left, 594 s): rq_1_scheduler_3|swap_test_n83|harvest3|auto|cultivation|44
+2026-10-30 09:19:04,859 INFO done 169 (19 left, 623 s): rq_1_scheduler_3|ising_n66|harvest3|auto|instant|
+2026-10-30 09:19:11,465 INFO done 170 (18 left, 629 s): rq_1_scheduler_3|ising_n66|harvest3|auto|cultivation|43
+2026-10-30 09:19:12,492 INFO done 171 (17 left, 630 s): rq_1_scheduler_3|ising_n66|harvest3|auto|cultivation|42
+2026-10-30 09:19:59,701 INFO done 172 (16 left, 678 s): rq_1_scheduler_3|ising_n66|harvest3|auto|cultivation|44
+2026-10-30 09:20:13,576 INFO done 173 (15 left, 692 s): rq_1_scheduler_3|dnn_n51|harvest3|auto|instant|
+2026-10-30 09:20:29,697 INFO done 174 (14 left, 708 s): rq_1_scheduler_3|dnn_n51|harvest3|auto|cultivation|42
+2026-10-30 09:21:17,544 INFO done 175 (13 left, 756 s): rq_1_scheduler_3|dnn_n51|harvest3|auto|cultivation|44
+2026-10-30 09:21:21,387 INFO done 176 (12 left, 759 s): rq_1_scheduler_3|dnn_n51|harvest3|auto|cultivation|43
+2026-10-30 09:21:25,069 INFO done 177 (11 left, 763 s): rq_1_scheduler_3|wstate_n76|harvest3|auto|instant|
+2026-10-30 09:22:14,873 INFO done 178 (10 left, 813 s): rq_1_scheduler_3|wstate_n76|harvest3|auto|cultivation|42
+2026-10-30 09:22:18,844 INFO done 179 (9 left, 817 s): rq_1_scheduler_3|wstate_n76|harvest3|auto|cultivation|44
+2026-10-30 09:22:19,402 INFO done 180 (8 left, 817 s): rq_1_scheduler_3|wstate_n76|harvest3|auto|cultivation|43
+2026-10-30 09:23:07,345 INFO done 181 (7 left, 865 s): rq_1_scheduler_3|qugan_n71|harvest3|auto|instant|
+2026-10-30 09:23:20,358 INFO done 182 (6 left, 878 s): rq_1_scheduler_3|qugan_n71|harvest3|auto|cultivation|43
+2026-10-30 09:23:21,197 INFO done 183 (5 left, 879 s): rq_1_scheduler_3|qugan_n71|harvest3|auto|cultivation|42
+2026-10-30 09:24:07,531 INFO done 184 (4 left, 925 s): rq_1_scheduler_3|qugan_n71|harvest3|auto|cultivation|44
+2026-10-30 09:24:53,806 INFO done 185 (3 left, 972 s): rq_1_scheduler_3|ising_n98|harvest3|auto|instant|
+2026-10-30 09:24:55,928 INFO done 186 (2 left, 974 s): rq_1_scheduler_3|ising_n98|harvest3|auto|cultivation|42
+2026-10-30 09:25:29,007 INFO done 187 (1 left, 1007 s): rq_1_scheduler_3|ising_n98|harvest3|auto|cultivation|43
+2026-10-30 09:25:54,904 INFO done 188 (0 left, 1033 s): rq_1_scheduler_3|ising_n98|harvest3|auto|cultivation|44
+2026-10-30 09:26:22,896 INFO maxp pruned
+2026-10-30 09:26:22,910 INFO cmap pruned
+2026-10-30 09:26:22,914 INFO kern dropped
+2026-10-30 09:26:22,914 INFO post pruned
+2026-10-30 09:26:22,915 INFO FFTM dropped
+2026-10-30 09:26:22,918 INFO GPOS pruned
+2026-10-30 09:26:22,922 INFO GSUB pruned
+2026-10-30 09:26:22,938 INFO glyf pruned
+2026-10-30 09:26:22,940 INFO Added gid0 to subset
+2026-10-30 09:26:22,940 INFO Added first four glyphs to subset
+2026-10-30 09:26:22,940 INFO Closing glyph list over 'MATH': 56 glyphs before
+2026-10-30 09:26:22,940 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'zero']
+2026-10-30 09:26:22,942 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153]
+2026-10-30 09:26:22,943 INFO Closed glyph list over 'MATH': 68 glyphs after
+2026-10-30 09:26:22,944 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:26:22,944 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:26:22,944 INFO Closing glyph list over 'GSUB': 68 glyphs before
+2026-10-30 09:26:22,945 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:26:22,945 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:26:23,023 INFO Closed glyph list over 'GSUB': 68 glyphs after
+2026-10-30 09:26:23,023 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:26:23,024 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:26:23,024 INFO Closing glyph list over 'glyf': 68 glyphs before
+2026-10-30 09:26:23,024 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:26:23,025 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:26:23,025 INFO Closed glyph list over 'glyf': 68 glyphs after
+2026-10-30 09:26:23,025 INFO Glyph names: ['.notdef', '.null', 'A', 'E', 'F', 'H', 'L', 'M', 'O', 'P', 'R', 'S', 'T', 'V', 'a', 'ampersand', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'multiply', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uni23A1', 'uni23A2', 'uni23A3', 'uni23A4', 'uni23A5', 'uni23A6', 'v', 'zero']
+2026-10-30 09:26:23,026 INFO Glyph IDs:   [0, 1, 2, 3, 9, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 40, 41, 43, 47, 48, 50, 51, 53, 54, 55, 57, 62, 64, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 153, 3506, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517]
+2026-10-30 09:26:23,027 INFO Retaining 68 glyphs
+2026-10-30 09:26:23,028 INFO head subsetting not needed
+2026-10-30 09:26:23,028 INFO hhea subsetting not needed
+2026-10-30 09:26:23,028 INFO maxp subsetting not needed
+2026-10-30 09:26:23,028 INFO OS/2 subsetting not needed
+2026-10-30 09:26:23,033 INFO hmtx subsetted
+2026-10-30 09:26:23,038 INFO cmap subsetted
+2026-10-30 09:26:23,039 INFO fpgm subsetting not needed
+2026-10-30 09:26:23,039 INFO prep subsetting not needed
+2026-10-30 09:26:23,039 INFO cvt  subsetting not needed
+2026-10-30 09:26:23,039 INFO loca subsetting not needed
+2026-10-30 09:26:23,039 INFO post subsetted
+2026-10-30 09:26:23,039 INFO gasp subsetting not needed
+2026-10-30 09:26:23,040 INFO MATH subsetted
+2026-10-30 09:26:23,043 INFO GDEF subsetted
+2026-10-30 09:26:23,071 INFO GPOS subsetted
+2026-10-30 09:26:23,075 INFO GSUB subsetted
+2026-10-30 09:26:23,075 INFO name subsetting not needed
+2026-10-30 09:26:23,079 INFO glyf subsetted
+2026-10-30 09:26:23,079 INFO head pruned
+2026-10-30 09:26:23,080 INFO OS/2 Unicode ranges pruned: [0, 1]
+2026-10-30 09:26:23,081 INFO OS/2 CodePage ranges pruned: [0]
+2026-10-30 09:26:23,082 INFO glyf pruned
+2026-10-30 09:26:23,083 INFO GDEF pruned
+2026-10-30 09:26:23,084 INFO GPOS pruned
+2026-10-30 09:26:23,084 INFO GSUB pruned
+2026-10-30 09:26:23,097 INFO name pruned

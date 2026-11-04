@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "knn_n41.trans",
+        rseed: 1006,
+        magic_state_lambda: 0.5,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 1223 products and 41 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               1223
+  Number of Cliffords:              0
+  Layers:                           112
+  Products per layer:               10.92 avg, 40 max
+Generated topology with dimensions: 17 12
+Number of qubits:
+  data:         42 (0.206)
+  bus:          112 (0.549)
+  magic:        50 (0.245)
+  total:        204
+Precomputed terminals and root candidates for 1223 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%05%06%07%08%09%11%12%13%14%15%17%18%19%20%21%23%24%25%26%27%29%30%31%32%33%34%36%37%39%40%41%42%43%44%46%47%48%49%50%51%52%53%54%55%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%73%74%75%76%77%78%79%80%81%82%83%84%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.053
+  bus:         0.108
+  magic:       0.014
+Magic unused 0.569
+Magic state cultivation time:
+  number:  968
+  average: 2.49
+  min:     1
+  max:     18
+T gate failures: 645/1223 (52.7%)
+Steiner tree computation called 139 times
+A* computation called 1666 times
+Timing: Scheduler::sched_circuit took 0.01 s
+Scheduled 1223 in 167 logical cycles, volume 34068
+Parallelism: 7.323x
+Max parallelism estimate: 16.375
+Volume estimate: 22848
+Normalized scheduling efficiency: 0.671
+Scheduled products written to knn_n41.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     7.9 ms  avg:   47.19 μs  max:   91.98 μs  calls: 167
+  other                     total:     1.7 ms  avg:   10.48 μs  max:   21.58 μs  calls: 167
+  schedule_lcycle           total:     6.2 ms  avg:   36.98 μs  max:   81.92 μs  calls: 167
+  update_cultivators        total:  504.82 μs  avg:    3.02 μs  max:   14.88 μs  calls: 167
+  sched_precomputed         total:  299.42 μs  avg:    1.79 μs  max:    2.44 μs  calls: 167
+  sched_remaining           total:     3.6 ms  avg:   21.54 μs  max:   65.65 μs  calls: 167
+  complete_lcycle           total:  723.14 μs  avg:    4.33 μs  max:   47.00 μs  calls: 167
+Timing: main took 0.01 s

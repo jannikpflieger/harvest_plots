@@ -1,0 +1,5 @@
+comparison,runs,area_unchanged_runs,T_n,T_geomean,T_wins,T_ties,T_losses,T_p10,T_p90,vol_n,vol_geomean,vol_wins,vol_ties,vol_losses,vol_p10,vol_p90,T_ratio_geomean,pm_faster_circuits
+PureMagic puremagic: T(no correction) / T(correction),1200.0,1200.0,120.0,0.9991425769622123,2.0,116.0,2.0,0.9955648073741833,1.0016757412622628,,,,,,,,,
+PureMagic puremagic_bus: T(no correction) / T(correction),1200.0,1200.0,120.0,0.9993349385601876,3.0,117.0,0.0,0.9975379431691416,1.0021876418911555,,,,,,,,,
+"PureMagic best variant / Harvest auto, cultivation, correction on (RQ1)",,,,,,,,,,120.0,1.1561477228221404,30.0,0.0,90.0,0.6703256360078278,1.4136069575289405,0.9174443892557843,78.0
+"PureMagic best variant / Harvest auto, cultivation, correction off (E13)",,,,,,,,,,120.0,1.1551272940967685,28.0,2.0,90.0,0.6680782778864971,1.413885057822028,0.9166346427240498,76.0

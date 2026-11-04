@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "swap_test_n83.trans",
+        rseed: 1008,
+        magic_state_lambda: 0.5,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 2519 products and 83 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               2519
+  Number of Cliffords:              0
+  Layers:                           199
+  Products per layer:               12.66 avg, 82 max
+Generated topology with dimensions: 19 16
+Number of qubits:
+  data:         84 (0.276)
+  bus:          0 (0.000)
+  magic:        220 (0.724)
+  total:        304
+Precomputed terminals and root candidates for 2519 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+02%04%06%08%09%11%13%15%17%18%20%22%24%26%28%30%31%33%35%37%39%41%42%44%46%48%50%51%53%55%57%58%60%61%63%64%66%67%69%70%72%74%75%77%78%80%81%83%84%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.041
+  bus:         NaN
+  magic:       0.098
+Magic unused 0.708
+Magic state cultivation time:
+  number:  2507
+  average: 1.86
+  min:     1
+  max:     14
+T gate failures: 1257/2519 (49.9%)
+Steiner tree computation called 262 times
+A* computation called 2431 times
+Timing: Scheduler::sched_circuit took 0.02 s
+Scheduled 2519 in 225 logical cycles, volume 68400
+Parallelism: 11.196x
+Max parallelism estimate: 18.985
+Volume estimate: 60496
+Normalized scheduling efficiency: 0.884
+Scheduled products written to swap_test_n83.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:    12.0 ms  avg:   53.30 μs  max:  164.62 μs  calls: 225
+  other                     total:     2.5 ms  avg:   10.99 μs  max:   26.12 μs  calls: 225
+  schedule_lcycle           total:     9.6 ms  avg:   42.86 μs  max:  153.16 μs  calls: 225
+  update_cultivators        total:  853.89 μs  avg:    3.79 μs  max:   12.29 μs  calls: 225
+  sched_precomputed         total:  398.52 μs  avg:    1.77 μs  max:   10.62 μs  calls: 225
+  sched_remaining           total:     6.1 ms  avg:   27.00 μs  max:  136.54 μs  calls: 225
+  complete_lcycle           total:     1.2 ms  avg:    5.14 μs  max:   71.87 μs  calls: 225
+Timing: main took 0.02 s

@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "sat_n7.trans",
+        rseed: 45,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 70 products and 7 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               70
+  Number of Cliffords:              0
+  Layers:                           38
+  Products per layer:               1.84 avg, 4 max
+Generated topology with dimensions: 9 4
+Number of qubits:
+  data:         8 (0.222)
+  bus:          0 (0.000)
+  magic:        28 (0.778)
+  total:        36
+Precomputed terminals and root candidates for 70 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%04%07%08%10%11%12%14%17%20%22%25%27%30%34%35%38%41%42%44%47%48%50%51%52%54%57%60%62%67%70%71%72%74%77%78%80%81%82%84%87%88%90%91%92%95%98%100%
+Qubit fractions used:
+  data:        0.230
+  bus:         NaN
+  magic:       0.150
+Magic unused 0.628
+Magic state cultivation time:
+  number:  81
+  average: 2.56
+  min:     1
+  max:     16
+T gate failures: 0/70 (0.0%)
+Steiner tree computation called 40 times
+A* computation called 30 times
+Timing: Scheduler::sched_circuit took 0.00 s
+Scheduled 70 in 49 logical cycles, volume 1764
+Parallelism: 1.429x
+Max parallelism estimate: 2.763
+Volume estimate: 1368
+Normalized scheduling efficiency: 0.776
+Scheduled products written to sat_n7.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     1.2 ms  avg:   23.71 μs  max:   37.30 μs  calls: 49
+  other                     total:  405.44 μs  avg:    8.27 μs  max:   20.95 μs  calls: 49
+  schedule_lcycle           total:  799.16 μs  avg:   16.31 μs  max:   29.06 μs  calls: 49
+  update_cultivators        total:   99.94 μs  avg:    2.04 μs  max:   14.32 μs  calls: 49
+  sched_precomputed         total:   75.01 μs  avg:    1.53 μs  max:    1.96 μs  calls: 49
+  sched_remaining           total:  175.38 μs  avg:    3.58 μs  max:   12.78 μs  calls: 49
+  complete_lcycle           total:  101.63 μs  avg:    2.07 μs  max:    5.17 μs  calls: 49
+Timing: main took 0.00 s

@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "bigadder_n18.trans",
+        rseed: 1006,
+        magic_state_lambda: 0.5,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 112 products and 18 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               112
+  Number of Cliffords:              0
+  Layers:                           89
+  Products per layer:               1.26 avg, 2 max
+Generated topology with dimensions: 11 7
+Number of qubits:
+  data:         18 (0.234)
+  bus:          0 (0.000)
+  magic:        59 (0.766)
+  total:        77
+Precomputed terminals and root candidates for 112 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%30%31%32%33%34%35%36%37%39%40%41%42%43%45%46%48%49%50%51%53%55%56%58%59%60%61%63%65%66%67%68%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.356
+  bus:         NaN
+  magic:       0.253
+Magic unused 0.684
+Magic state cultivation time:
+  number:  389
+  average: 1.76
+  min:     1
+  max:     9
+T gate failures: 66/112 (58.9%)
+Steiner tree computation called 113 times
+A* computation called 0 times
+Timing: Scheduler::sched_circuit took 0.00 s
+Scheduled 112 in 100 logical cycles, volume 7700
+Parallelism: 1.120x
+Max parallelism estimate: 1.888
+Volume estimate: 6853
+Normalized scheduling efficiency: 0.890
+Scheduled products written to bigadder_n18.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     3.1 ms  avg:   31.47 μs  max:   47.28 μs  calls: 100
+  other                     total:  931.19 μs  avg:    9.31 μs  max:   19.14 μs  calls: 100
+  schedule_lcycle           total:     2.4 ms  avg:   23.71 μs  max:   39.67 μs  calls: 100
+  update_cultivators        total:  227.81 μs  avg:    2.28 μs  max:    3.35 μs  calls: 100
+  sched_precomputed         total:  154.14 μs  avg:    1.54 μs  max:    7.68 μs  calls: 100
+  sched_remaining           total:  963.18 μs  avg:    9.63 μs  max:   18.51 μs  calls: 100
+  complete_lcycle           total:  208.19 μs  avg:    2.08 μs  max:    5.73 μs  calls: 100
+Timing: main took 0.00 s

@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit square_heisenberg_N4.trans --magic-state-lambda 1.0 --rseed 1006 --ancilla-rows 1

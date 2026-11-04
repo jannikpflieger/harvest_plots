@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit qaoa_barabasi_albert_N16_3reps.trans --magic-state-lambda 0.3333333333333333 --rseed 48 --ancilla-rows 1 --use-magic-routing --no-t-failures

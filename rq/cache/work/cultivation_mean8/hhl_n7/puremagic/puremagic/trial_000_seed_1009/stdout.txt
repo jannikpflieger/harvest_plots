@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "hhl_n7.trans",
+        rseed: 1009,
+        magic_state_lambda: 0.125,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 2101 products and 7 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               2101
+  Number of Cliffords:              0
+  Layers:                           2009
+  Products per layer:               1.05 avg, 5 max
+Generated topology with dimensions: 9 4
+Number of qubits:
+  data:         8 (0.222)
+  bus:          0 (0.000)
+  magic:        28 (0.778)
+  total:        36
+Precomputed terminals and root candidates for 2101 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.688
+  bus:         NaN
+  magic:       0.354
+Magic unused 0.331
+Magic state cultivation time:
+  number:  2094
+  average: 3.00
+  min:     1
+  max:     45
+T gate failures: 1021/2101 (48.6%)
+Steiner tree computation called 1790 times
+A* computation called 314 times
+Timing: Scheduler::sched_circuit took 0.07 s
+Scheduled 2101 in 2038 logical cycles, volume 73368
+Parallelism: 1.031x
+Max parallelism estimate: 1.568
+Volume estimate: 72324
+Normalized scheduling efficiency: 0.986
+Scheduled products written to hhl_n7.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:    65.1 ms  avg:   31.93 μs  max:  644.36 μs  calls: 2038
+  other                     total:    19.5 ms  avg:    9.58 μs  max:   55.11 μs  calls: 2038
+  schedule_lcycle           total:    45.4 ms  avg:   22.28 μs  max:   80.53 μs  calls: 2038
+  update_cultivators        total:     4.3 ms  avg:    2.12 μs  max:   13.83 μs  calls: 2038
+  sched_precomputed         total:     3.6 ms  avg:    1.77 μs  max:    9.57 μs  calls: 2038
+  sched_remaining           total:    15.2 ms  avg:    7.43 μs  max:   37.71 μs  calls: 2038
+  complete_lcycle           total:     4.8 ms  avg:    2.36 μs  max:  101.20 μs  calls: 2037
+Timing: main took 0.08 s

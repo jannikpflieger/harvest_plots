@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit ising_n26.trans --magic-state-lambda 0.3333333333333333 --rseed 1002 --ancilla-rows 1 --use-magic-routing

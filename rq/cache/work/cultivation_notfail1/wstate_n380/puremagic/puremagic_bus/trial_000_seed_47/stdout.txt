@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "wstate_n380.trans",
+        rseed: 47,
+        magic_state_lambda: 0.3333333333333333,
+        no_t_failures: true,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: false,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 20699 products and 380 qubits
+Timing: Circuit::load_circuit took 0.02 s
+Circuit statistics:
+  Number of products:               20699
+  Number of Cliffords:              0
+  Layers:                           10343
+  Products per layer:               2.00 avg, 379 max
+Generated topology with dimensions: 41 33
+Number of qubits:
+  data:         380 (0.281)
+  bus:          833 (0.616)
+  magic:        140 (0.103)
+  total:        1353
+Precomputed terminals and root candidates for 20699 products
+Timing: precompute_terminals_and_roots took 0.01 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.015
+  bus:         0.016
+  magic:       0.005
+Magic unused 0.944
+Magic state cultivation time:
+  number:  17617
+  average: 3.52
+  min:     1
+  max:     37
+T gate failures: 0/20699 (0.0%)
+Steiner tree computation called 6900 times
+A* computation called 77799 times
+Timing: Scheduler::sched_circuit took 0.65 s
+Scheduled 20699 in 10580 logical cycles, volume 14314740
+Parallelism: 1.956x
+Max parallelism estimate: 3.002
+Volume estimate: 13994079
+Normalized scheduling efficiency: 0.978
+Scheduled products written to wstate_n380.schedule
+Timing: Scheduler::print_schedule took 0.14 s
+Accumulated timings (ms):
+  schedule loop             total:   585.0 ms  avg:   55.30 μs  max:     2.9 ms  calls: 10580
+  other                     total:   111.4 ms  avg:   10.53 μs  max:   74.31 μs  calls: 10580
+  schedule_lcycle           total:   511.0 ms  avg:   48.30 μs  max:     2.9 ms  calls: 10580
+  update_cultivators        total:    32.4 ms  avg:    3.06 μs  max:   15.16 μs  calls: 10580
+  sched_precomputed         total:    16.9 ms  avg:    1.60 μs  max:   18.65 μs  calls: 10580
+  sched_remaining           total:   350.8 ms  avg:   33.15 μs  max:     2.8 ms  calls: 10580
+  complete_lcycle           total:    24.5 ms  avg:    2.31 μs  max:  456.49 μs  calls: 10580
+Timing: main took 0.83 s

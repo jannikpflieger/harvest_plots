@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit quantumwalks_n2.trans --magic-state-lambda 0.0387396 --rseed 42 --ancilla-rows 1 --no-t-failures

@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit vqe_uccsd_n6.trans --magic-state-lambda 0.1 --rseed 46 --ancilla-rows 1 --use-magic-routing --no-t-failures

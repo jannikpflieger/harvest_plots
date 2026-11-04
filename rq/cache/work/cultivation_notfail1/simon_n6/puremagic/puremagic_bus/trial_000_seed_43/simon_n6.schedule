@@ -1,0 +1,16 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "simon_n6.trans", rseed: 43, magic_state_lambda: 0.3333333333333333, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: false, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 10
+# Total logical cycles: 10
+# Total products: 14
+# Parallelism: 1.40
+ 1: _X_X 0<T>
+ 2: XX_X 1<T>
+ 3: XX_X 2<T> 4<T>
+ 4: X__X 3<T> 6<T>
+ 5: XX__ 5<T>
+ 6: _X_X 7<T>
+ 7: XX_X 8<T>
+ 8: XX_X 9<T> 11<T>
+ 9: X__X 10<T> 13<T>
+10: XX__ 12<T>

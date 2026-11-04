@@ -1,0 +1,68 @@
+PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+Args {
+    common: CommonArgs {
+        circuit_fname: "adder_n28.trans",
+        rseed: 1008,
+        magic_state_lambda: 0.2,
+        no_t_failures: false,
+        ancilla_rows: 1,
+    },
+    randomize_data_qubits: false,
+    topo_fname: "",
+    show_product_ids: false,
+    log_scheduler: "none",
+    use_magic_routing: true,
+    sides_only: false,
+    record_cultivation_dist: false,
+    plot: [
+        "",
+    ],
+}
+Loaded circuit with 168 products and 28 qubits
+Timing: Circuit::load_circuit took 0.00 s
+Circuit statistics:
+  Number of products:               168
+  Number of Cliffords:              0
+  Layers:                           116
+  Products per layer:               1.45 avg, 2 max
+Generated topology with dimensions: 11 10
+Number of qubits:
+  data:         28 (0.255)
+  bus:          0 (0.000)
+  magic:        82 (0.745)
+  total:        110
+Precomputed terminals and root candidates for 168 products
+Timing: precompute_terminals_and_roots took 0.00 s
+Precomputed 0 multi-term Clifford trees
+Timing: precompute_clifford_trees took 0.00 s
+01%02%03%04%05%06%07%08%09%10%11%12%13%14%16%17%18%19%20%22%23%24%25%26%27%29%30%31%32%33%34%35%36%37%38%39%41%42%43%44%45%47%48%49%50%51%52%53%54%55%57%58%59%60%61%63%64%65%66%67%68%69%70%71%72%73%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%
+Qubit fractions used:
+  data:        0.271
+  bus:         NaN
+  magic:       0.230
+Magic unused 0.569
+Magic state cultivation time:
+  number:  514
+  average: 3.00
+  min:     1
+  max:     30
+T gate failures: 90/168 (53.6%)
+Steiner tree computation called 172 times
+A* computation called 0 times
+Timing: Scheduler::sched_circuit took 0.01 s
+Scheduled 168 in 127 logical cycles, volume 13970
+Parallelism: 1.323x
+Max parallelism estimate: 2.172
+Volume estimate: 12760
+Normalized scheduling efficiency: 0.913
+Scheduled products written to adder_n28.schedule
+Timing: Scheduler::print_schedule took 0.00 s
+Accumulated timings (ms):
+  schedule loop             total:     4.4 ms  avg:   34.50 μs  max:   48.75 μs  calls: 127
+  other                     total:     1.2 ms  avg:    9.63 μs  max:   18.16 μs  calls: 127
+  schedule_lcycle           total:     3.4 ms  avg:   26.79 μs  max:   39.18 μs  calls: 127
+  update_cultivators        total:  326.77 μs  avg:    2.57 μs  max:   10.62 μs  calls: 127
+  sched_precomputed         total:  192.69 μs  avg:    1.52 μs  max:    2.37 μs  calls: 127
+  sched_remaining           total:     1.6 ms  avg:   12.38 μs  max:   24.58 μs  calls: 127
+  complete_lcycle           total:  287.95 μs  avg:    2.27 μs  max:   11.73 μs  calls: 127
+Timing: main took 0.01 s

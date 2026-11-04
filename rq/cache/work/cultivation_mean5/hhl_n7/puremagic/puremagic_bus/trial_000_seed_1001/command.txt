@@ -1,0 +1,1 @@
+/home/jannik/.cache/harvest-tools/PureMagic/target/release/puremagic --circuit hhl_n7.trans --magic-state-lambda 0.2 --rseed 1001 --ancilla-rows 1

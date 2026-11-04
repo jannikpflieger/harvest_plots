@@ -1,0 +1,29 @@
+# PureMagic - Git branch: HEAD | Commit: f990c3ec | Built: 2026-10-26T21:00:44.738338590Z
+# Args { common: CommonArgs { circuit_fname: "multiply_n13.trans", rseed: 44, magic_state_lambda: 0.3333333333333333, no_t_failures: true, ancilla_rows: 1 }, randomize_data_qubits: false, topo_fname: "", show_product_ids: false, log_scheduler: "none", use_magic_routing: true, sides_only: false, record_cultivation_dist: false, plot: [""] }
+# Total active logical cycles: 23
+# Total logical cycles: 23
+# Total products: 42
+# Parallelism: 1.83
+ 1: ZZ___XX____ 0<T> 7<T>
+ 2: Z_Z__X_____ 1<T>
+ 3: Z_Z__X_____ 2<T> 3<T>
+ 4: Z_Z__X_____ 4<T> 6<T>
+ 5: Z_Z____X___ 14<T> 5<T>
+ 6: ZZZZ__XX___ 15<T> 8<T>
+ 7: ZZZZ__XX___ 16<T> 9<T> 10<T> 17<T>
+ 8: _ZZ___XX___ 11<T> 13<T> 20<T>
+ 9: ZZZZ____X__ 18<T> 21<T> 12<T>
+10: Z__Z_____X_ 28<T> 19<T>
+11: _Z_Z____X__ 22<T>
+12: Z__ZZ___XX_ 29<T> 24<T>
+13: ZZ______X__ 30<T> 23<T> 27<T>
+14: ____Z____X_ 31<T>
+15: _Z_Z_____X_ 25<T> 34<T>
+16: Z__ZZ______ 32<T> 26<T>
+17: _Z________X 35<T>
+18: ____Z______ 33<T>
+19: _Z__Z_____X 36<T>
+20: _Z_________ 37<T>
+21: ____Z_____X 38<T>
+22: _Z__Z_____X 39<T> 41<T>
+23: ____Z______ 40<T>
