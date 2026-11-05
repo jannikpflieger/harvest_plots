@@ -1,11 +1,12 @@
 """Evaluation figures and LaTeX tables for Harvest (Section 7).
 
-Data: ONLY the `rq/` results directory (rq1_view, rq1, rq2, rq3, rq4, rq5).
+Data: the `rq/` results directory (rq1_view, rq1, rq2, rq3, rq4, rq5, rq_cult_sweep) and
+`new_experiments/` (E10 framework vs. scheduler, E14 cultivation sensitivity).
 Style: follows plot_code/single_column_paper_plots.py and the combined
 row scripts (1 x N panels, page width, pastel bars with hatches, shared
 legend, bold "(a)" panel titles, blue "lower/higher is better" marker).
 
-Usage:  python make_eval_plots.py /path/to/rq  figures/evaluation
+Usage:  python make_eval_plots.py /path/to/rq  figures/evaluation  [/path/to/new_experiments]
 
 Writes every figure (.pdf + .png preview), its .tex wrapper, and the LaTeX tables.
 """
@@ -31,8 +32,11 @@ code_palette_muted = sns.color_palette("muted", n_colors=10)
 code_palette_deep = sns.color_palette("deep", n_colors=10)
 code_hatches = ["/", "\\", "//", "++", "xx", "**"]
 
+FONTSIZE = 12              # every text element; values on top of bars use FONTSIZE - 2
+
 plt.rcParams.update({
     "font.family": "serif",
+    "font.size": FONTSIZE,
     "lines.linewidth": 1.4,
     "lines.markersize": 4,
     "lines.markeredgewidth": 0.6,
@@ -44,29 +48,90 @@ plt.rcParams.update({
 })
 
 PAPER_WIDTH = 9.5          # wider row for a single-column (acmsmall) page; was 7.2
-_BASE_WIDTH = 7.2
+ROW_HEIGHT = 2.2           # same figure height as the Framed paper plots (HEIGHT_FIGSIZE)
+LABEL_SIZE = TICK_SIZE = TITLE_SIZE = MARKER_SIZE = FONTSIZE
+LEGEND_SIZE = FONTSIZE - 2
+BAR_VALUE_SIZE = FONTSIZE - 2
+LOWER = r"Lower is better $\downarrow$"
+HIGHER = r"Higher is better $\uparrow$"
 
 
-def L(x: float) -> float:
-    """Scale a left margin chosen for a 7.2in figure to the current width."""
-    return x * _BASE_WIDTH / PAPER_WIDTH
+def tight_layout_engine(fig) -> None:
+    """Constrained layout (no overlapping labels) with little space between panels."""
+    fig.set_layout_engine("constrained")
+    fig.get_layout_engine().set(w_pad=2 / 72, h_pad=2 / 72, wspace=0.0, hspace=0.0)
 
 
-def R(x: float) -> float:
-    """Scale a right margin chosen for a 7.2in figure to the current width."""
-    return 1 - (1 - x) * _BASE_WIDTH / PAPER_WIDTH
-LABEL_SIZE = 8.5
-TICK_SIZE = 7.5
-TITLE_SIZE = 9.0
-LEGEND_SIZE = 7.2
-VALUE_SIZE = 5.8
+AXES_HEIGHT = 1.285   # plotting-area height of a 2.2in row whose x labels are not rotated
+
+
+def match_axes_height(fig, target: float = AXES_HEIGHT) -> None:
+    """Grow the figure until its panels are ``target`` inches tall.
+
+    For rows with rotated x tick labels, which need more room below the panels:
+    the plotting area then matches the other figures, only the figure is taller.
+    """
+    for _ in range(4):
+        fig.canvas.draw()
+        h = fig.axes[0].get_position().height * fig.get_figheight()
+        if abs(h - target) < 0.003:
+            break
+        fig.set_figheight(fig.get_figheight() + target - h)
+
+
+PANEL_WIDTH = 2.40    # width of one panel slot in every row figure (inches)
+
+
+def fix_panel_width(fig, axes) -> None:
+    """Give every panel of a row the same width in every figure.
+
+    The constrained layout sizes panels per figure, so their width depends on
+    each figure's labels.  Freeze its result, set each slot to PANEL_WIDTH (a
+    first panel spanning two slots gets 2*PANEL_WIDTH plus the gap), keep the
+    gaps it computed, and center the row.  The figure width stays the same, so
+    the panels also have the same width on the page.
+    """
+    fig.canvas.draw()
+    fw = fig.get_figwidth()
+    pos = [ax.get_position() for ax in axes]
+    gaps = [pos[i + 1].x0 - pos[i].x1 for i in range(len(pos) - 1)]
+    w = PANEL_WIDTH / fw
+    widths = [w] * len(axes) if len(axes) == 3 else [2 * w + gaps[0], w]
+    total = sum(widths) + sum(gaps)
+    if total > pos[-1].x1 - pos[0].x0 + 1e-6:
+        raise ValueError(f"row does not fit with PANEL_WIDTH = {PANEL_WIDTH} in")
+    x = pos[0].x0 + ((pos[-1].x1 - pos[0].x0) - total) / 2
+    fig.set_layout_engine("none")   # keep the positions set below
+    for ax, p_, t, g in zip(axes, pos, widths, gaps + [0]):
+        ax.set_position([x, p_.y0, t, p_.height])
+        x += t + g
+
+
+def row_figure(n_panels: int, height: float = ROW_HEIGHT, sharey: bool = False):
+    """A row of panels on a grid of three equal slots.
+
+    Three panels take one slot each, so they all have the same width; with two
+    panels the first one spans two slots.
+    """
+    fig = plt.figure(figsize=(PAPER_WIDTH, height))
+    tight_layout_engine(fig)
+    gs = fig.add_gridspec(1, 3)
+    if n_panels == 3:
+        axes = list(gs.subplots(sharey=sharey))
+    elif n_panels == 2:
+        a = fig.add_subplot(gs[0, :2])
+        axes = [a, fig.add_subplot(gs[0, 2], sharey=a if sharey else None)]
+    else:
+        raise ValueError(f"row_figure supports 2 or 3 panels, not {n_panels}")
+    fig._row_axes = axes   # save() fixes their width
+    return fig, axes
 
 # Order used in every plot and table: baselines first, Harvest last (rightmost).
 COMPILERS = ["Litinski", "O3LS", "EAF", "PureMagic", "Harvest"]
 BASELINES = COMPILERS[:-1]
 SOTA_ORDER = COMPILERS
 MODELS = ["instant", "cultivation"]
-MODEL_LABELS = {"instant": "Instant", "cultivation": "Cultivation"}
+MODEL_LABELS = {"instant": "Free model", "cultivation": "Cultivation"}
 
 # One hue per framework, used in all figures. Instant = darker shade, cultivation = lighter.
 _HUE = {"Harvest": 0, "EAF": 1, "PureMagic": 2, "Litinski": 3, "O3LS": 4}
@@ -83,11 +148,12 @@ LINE_COLOR = {c: {"instant": code_palette_deep[i],
                   "cultivation": _lighten(code_palette_deep[i], 0.45)}
               for c, i in _HUE.items()}                                        # lines per model
 # Neutral colors for things that are not frameworks
-TEMPLATE_COLORS = {"ring": code_palette_deep[5], "blocks4": code_palette_deep[8],
+TEMPLATE_COLORS = {"ring": code_palette_deep[5], "blocks4": code_palette_deep[6],
                    "dense4": code_palette_deep[9]}
 OBLIVIOUS_COLOR = code_palette_deep[7]
 PHASE_COLORS = [code_palette[5], code_palette[6], code_palette[7], code_palette[8]]
-MODEL_HATCH = {"instant": code_hatches[0], "cultivation": code_hatches[1]}
+# instant vs cultivation pairs: "/" vs "\\" look too alike, so use clearly different patterns
+MODEL_HATCH = {"instant": "*", "cultivation": "//"}
 
 
 def model_legend_handles(compiler: str | None = None):
@@ -111,9 +177,34 @@ def panel_title(letter: str, title: str) -> str:
     return rf"$\mathbf{{({letter})}}$ {title}"
 
 
-def better_marker(fig, text: str, x: float = 0.5, ha: str = "center") -> None:
-    fig.text(x, 0.99, text, ha=ha, va="top", fontsize=LEGEND_SIZE,
-             fontweight="bold", color="blue")
+def panel_markers(fig, axes, labels) -> None:
+    """Blue "lower/higher is better" marker centered over every panel.
+
+    ``labels`` is one string for all panels or one per panel ("" = no marker).
+    The markers share one row above the panel titles; an invisible suptitle makes
+    the constrained layout reserve that row.
+    """
+    from matplotlib.transforms import blended_transform_factory
+    if isinstance(labels, str):
+        labels = [labels] * len(axes)
+    fig.suptitle(max(labels, key=len), fontsize=MARKER_SIZE, fontweight="bold", color="none")
+    y = fig._suptitle.get_position()[1]
+    for ax, label in zip(axes, labels):
+        if not label:
+            continue
+        t = fig.text(0.5, y, label, transform=blended_transform_factory(ax.transAxes, fig.transFigure),
+                     ha="center", va="top", fontsize=MARKER_SIZE, fontweight="bold", color="blue")
+        t.set_in_layout(False)
+
+
+def panel_legend(ax, *args, **kw):
+    """Legend inside a panel, at FONTSIZE - 2."""
+    kw.setdefault("frameon", False)
+    kw.setdefault("fontsize", LEGEND_SIZE)
+    kw.setdefault("columnspacing", 1.0)
+    kw.setdefault("handletextpad", 0.4)
+    kw.setdefault("borderaxespad", 0.3)
+    return ax.legend(*args, **kw)
 
 
 def style_axis(ax, grid_axis: str = "y") -> None:
@@ -123,6 +214,8 @@ def style_axis(ax, grid_axis: str = "y") -> None:
 
 
 def save(fig, path: Path) -> None:
+    if hasattr(fig, "_row_axes"):
+        fix_panel_width(fig, fig._row_axes)
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, format="pdf")
     fig.savefig(path.with_suffix(".png"), dpi=200)
@@ -136,7 +229,7 @@ def bar_labels(ax, bars, values, y_max, fmt="{:.2f}", clip=None, rotation=90):
             continue
         h = min(v, clip) if clip else v
         ax.text(bar.get_x() + bar.get_width() / 2, h + y_max * 0.02,
-                fmt.format(v), ha="center", va="bottom", fontsize=VALUE_SIZE - 0.3,
+                fmt.format(v), ha="center", va="bottom", fontsize=BAR_VALUE_SIZE,
                 rotation=rotation)
 
 
@@ -193,10 +286,10 @@ class Data:
 def fig_sota(D: Data, out: Path) -> None:
     """(a) makespan / T_cp; (b) area / n; (c) volume / (n * T_cp). All size-normalized."""
     metrics = [
-        ("vol_per_qubit_cp", "Space-time volume", r"Volume / $(n \cdot T_{cp})$", 9.0,
-         r"solid line: $n$ data patches for $T_{cp}$"),
-        ("T_over_cp", "Timesteps", r"Timesteps / $T_{cp}$", 3.0,
-         r"solid line: critical path $T_{cp}$"),
+        ("vol_per_qubit_cp", "Space-time volume", r"Volume / ($n$ $\times$ depth)", 9.0,
+         r"solid line: $n$ data patches for depth steps"),
+        ("T_over_cp", "Timesteps", r"Timesteps / depth", 3.0,
+         r"solid line: circuit depth"),
         ("area_per_qubit", "Patches per logical qubit", r"Patches / $n$", 6.0,
          "solid line: data patches only"),
     ]
@@ -209,7 +302,7 @@ def fig_sota(D: Data, out: Path) -> None:
             rc = r[r.compiler == c]
             vals[m][c] = {k: gmean(rc[k]) for k, *_ in metrics}
 
-    fig, axes = plt.subplots(1, 3, figsize=(PAPER_WIDTH, 2.35))
+    fig, axes = row_figure(3)
     xs = np.arange(len(SOTA_ORDER))
     w = 0.38
     for i, (ax, (key, title, ylabel, clip, refl)) in enumerate(zip(axes, metrics)):
@@ -225,14 +318,14 @@ def fig_sota(D: Data, out: Path) -> None:
         ax.set_xticks(xs)
         ax.set_xticklabels(SOTA_ORDER, rotation=30, ha="right", rotation_mode="anchor",
                            fontsize=TICK_SIZE)
-        ax.set_ylim(0, clip * 1.45)
-        ax.set_ylabel(ylabel, fontsize=LABEL_SIZE - 0.5, labelpad=1)
+        ax.set_ylim(0, clip * 1.75)
+        ax.set_ylabel(ylabel, fontsize=LABEL_SIZE, labelpad=1)
         ax.set_title(panel_title(chr(97 + i), title), fontsize=TITLE_SIZE, loc="left", pad=3)
         style_axis(ax)
-    fig.legend(handles=model_legend_handles(), loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=2, frameon=False,
-               fontsize=LEGEND_SIZE, handlelength=1.4, columnspacing=1.0)
-    better_marker(fig, r"Lower is better $\downarrow$")
-    fig.subplots_adjust(left=L(0.065), right=R(0.995), bottom=0.30, top=0.85, wspace=0.30)
+    panel_legend(axes[2], handles=model_legend_handles(), loc="upper left", ncol=2,
+                 handlelength=1.5, handleheight=1.2, columnspacing=0.6)
+    panel_markers(fig, axes, LOWER)
+    match_axes_height(fig)
     save(fig, out / "fig_rq1_sota.pdf")
     # numbers for the text
     rows = [(m, c, *[vals[m][c][k] for k, *_ in metrics]) for m in MODELS for c in SOTA_ORDER]
@@ -244,7 +337,8 @@ def fig_sota(D: Data, out: Path) -> None:
 # Fig. 2  RQ1 - per-circuit distribution of the volume ratio
 # --------------------------------------------------------------------------
 def fig_sota_distribution(D: Data, out: Path) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(PAPER_WIDTH, 2.35), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(PAPER_WIDTH, ROW_HEIGHT), sharey=True)
+    tight_layout_engine(fig)
     for i, (ax, m) in enumerate(zip(axes, MODELS)):
         r = D.ratios(m)
         for c in BASELINES:
@@ -255,7 +349,7 @@ def fig_sota_distribution(D: Data, out: Path) -> None:
             wins = int((v > 1.01).sum())
             ax.plot(frac, v, color=COMPILER_COLORS[c], linewidth=1.4,
                     label=c if i == 0 else None)
-            ax.text(1.0, v[-1], f" {wins}/{len(v)}", fontsize=VALUE_SIZE,
+            ax.text(1.0, v[-1], f" {wins}/{len(v)}", fontsize=FONTSIZE,
                     color=COMPILER_COLORS[c], va="center", ha="left")
         ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
         ax.set_yscale("log")
@@ -266,13 +360,13 @@ def fig_sota_distribution(D: Data, out: Path) -> None:
         ax.set_title(panel_title(chr(97 + i), f"{MODEL_LABELS[m]} magic states"),
                      fontsize=TITLE_SIZE, loc="left", pad=3)
         style_axis(ax, "both")
-    axes[0].set_ylabel("Volume / Harvest volume", fontsize=LABEL_SIZE, labelpad=2)
-    fig.supxlabel("Fraction of circuits", fontsize=LABEL_SIZE, y=0.14)
+    for ax in axes:
+        ax.set_ylabel("Volume / Harvest volume", fontsize=LABEL_SIZE, labelpad=2)
+    for ax in axes:
+        ax.set_xlabel("Fraction of circuits", fontsize=LABEL_SIZE)
     h, l = axes[0].get_legend_handles_labels()
-    fig.legend(h, l, loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=4, frameon=False,
-               fontsize=LEGEND_SIZE, handlelength=1.4, columnspacing=1.0)
-    better_marker(fig, r"Above 1: Harvest better $\uparrow$")
-    fig.subplots_adjust(left=L(0.09), right=R(0.97), bottom=0.31, top=0.85, wspace=0.08)
+    panel_legend(axes[0], h, l, loc="upper left", ncol=2, handlelength=1.4)
+    panel_markers(fig, axes, r"Above 1: Harvest better $\uparrow$")
     save(fig, out / "fig_rq1_per_circuit.pdf")
 
 
@@ -307,10 +401,10 @@ def fig_size(D: Data, out: Path) -> pd.DataFrame:
     """Circuits sorted by size on x; per framework: faint per-circuit markers and a
     rolling geometric mean line."""
     metrics = [
-        ("vol_per_qubit_cp", "Space-time volume", r"Volume / $(n \cdot T_{cp})$",
-         [1, 2, 5, 10, 20, 50]),
-        ("T_over_cp", "Timesteps", r"Timesteps / $T_{cp}$",
-         [1, 1.5, 2, 3, 5, 10, 20]),
+        ("vol_per_qubit_cp", "Space-time volume", r"Volume / ($n$ $\times$ depth)",
+         [1, 3, 10, 30, 100]),
+        ("T_over_cp", "Timesteps", r"Timesteps / depth",
+         [1, 3, 10, 30, 100]),
         ("area_per_qubit", "Patches per logical qubit", r"Patches / $n$", [1, 2, 3, 5, 10]),
     ]
     all_curves = []
@@ -323,7 +417,7 @@ def fig_size(D: Data, out: Path) -> pd.DataFrame:
                  .circuit.tolist())
         pos = {c: i for i, c in enumerate(order)}
         nq = r[r.compiler == "Harvest"].set_index("circuit").num_qubits.reindex(order).to_numpy()
-        fig, axes = plt.subplots(1, 3, figsize=(PAPER_WIDTH, 2.45))
+        fig, axes = row_figure(3)
         for i, (ax, (key, title, ylabel, yt)) in enumerate(zip(axes, metrics)):
             for c in COMPILERS:
                 s_ = r[r.compiler == c].set_index("circuit")[key].reindex(order)
@@ -345,18 +439,19 @@ def fig_size(D: Data, out: Path) -> pd.DataFrame:
             # x ticks: label positions with the qubit count of the circuit there
             ticks = [k for k in np.linspace(0, len(order) - 1, 7).round().astype(int)]
             ax.set_xticks(ticks)
-            ax.set_xticklabels([str(int(nq[k])) for k in ticks], fontsize=TICK_SIZE - 0.5)
+            ax.set_xticklabels([str(int(nq[k])) for k in ticks], fontsize=TICK_SIZE)
             ax.set_xlim(-1, len(order))
-            ax.set_ylabel(ylabel, fontsize=LABEL_SIZE - 0.5, labelpad=1)
+            ax.set_ylabel(ylabel, fontsize=LABEL_SIZE, labelpad=1)
             ax.set_title(panel_title(chr(97 + i), title), fontsize=TITLE_SIZE, loc="left", pad=3)
             style_axis(ax, "both")
-        fig.supxlabel("Logical qubits $n$",
-                      fontsize=LABEL_SIZE, y=0.12)
+        axes[1].set_xlabel("Logical qubits $n$", fontsize=LABEL_SIZE)
         h, l = axes[0].get_legend_handles_labels()
-        fig.legend(h, l, loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=5, frameon=False,
-                   fontsize=LEGEND_SIZE, handlelength=1.8, columnspacing=1.0)
-        better_marker(fig, r"Lower is better $\downarrow$")
-        fig.subplots_adjust(left=L(0.07), right=R(0.995), bottom=0.32, top=0.86, wspace=0.30)
+        # legend in the empty upper-left of (b); raise its top so the curves stay clear
+        lo, hi = axes[1].get_ylim()
+        axes[1].set_ylim(lo, hi * 6)
+        panel_legend(axes[1], h, l, loc="upper left", ncol=2, handlelength=1.4,
+                     columnspacing=0.8, labelspacing=0.25)
+        panel_markers(fig, axes, LOWER)
         save(fig, out / f"fig_rq1_size_{model}.pdf")
     return pd.concat(all_curves)
 
@@ -368,7 +463,7 @@ FAMILY_LABELS = {
     "qft": "QFT", "qaoa": "QAOA", "heisenberg_square": "Heisenberg", "ising": "Ising",
     "adder": "Adder", "dnn": "DNN", "knn": "kNN", "wstate": "W state",
     "multiplier": "Multiplier", "random": "Random", "swap_test": "Swap test",
-    "vqe_uccsd": "VQE-UCCSD", "other": "Other",
+    "vqe_uccsd": "VQE-UCCSD", "qugan": "QuGAN", "other": "Other",
 }
 FAMILY_MIN_CIRCUITS = 3   # smaller families are merged into "Other"
 
@@ -393,15 +488,16 @@ def family_curves(D: Data, model: str) -> pd.DataFrame:
 def fig_family(D: Data, out: Path) -> pd.DataFrame:
     """One figure per supply model; three stacked panels share the family axis."""
     metrics = [
-        ("vol_per_qubit_cp", "Space-time volume", r"Vol. / $(n \cdot T_{cp})$", 10.0),
-        ("T_over_cp", "Timesteps", r"Timesteps / $T_{cp}$", 3.0),
+        ("vol_per_qubit_cp", "Space-time volume", r"Vol. / ($n$ $\times$ depth)", 10.0),
+        ("T_over_cp", "Timesteps", r"Timesteps / depth", 3.0),
         ("area_per_qubit", "Patches per logical qubit", r"Patches / $n$", 7.0),
     ]
     all_g = []
     for model in MODELS:
         g, order = family_curves(D, model)
         all_g.append(g)
-        fig, axes = plt.subplots(3, 1, figsize=(PAPER_WIDTH, 5.6), sharex=True)
+        fig, axes = plt.subplots(3, 1, figsize=(PAPER_WIDTH, 6.6), sharex=True)
+        tight_layout_engine(fig)
         xs = np.arange(len(order))
         w = 0.16
         for i, (ax, (key, title, ylabel, clip)) in enumerate(zip(axes, metrics)):
@@ -414,21 +510,21 @@ def fig_family(D: Data, out: Path) -> pd.DataFrame:
                     if np.isfinite(val) and val > clip:
                         y = clip * (1.02 if j % 2 == 0 else 1.17)
                         ax.text(bar.get_x() + bar.get_width() / 2, y, f"{val:.0f}",
-                                ha="center", va="bottom", fontsize=VALUE_SIZE - 0.8)
+                                ha="center", va="bottom", fontsize=BAR_VALUE_SIZE)
             ax.axhline(1.0, color="black", linewidth=0.9)
             ax.set_ylim(0, clip * 1.32)
-            ax.set_ylabel(ylabel, fontsize=LABEL_SIZE - 0.5, labelpad=1)
+            ax.set_ylabel(ylabel, fontsize=LABEL_SIZE, labelpad=1)
             ax.set_title(panel_title(chr(97 + i), title), fontsize=TITLE_SIZE, loc="left", pad=2)
             style_axis(ax)
         n = g[g.compiler == "Harvest"].set_index("fam").reindex(order).n
         axes[-1].set_xticks(xs)
         axes[-1].set_xticklabels([f"{FAMILY_LABELS.get(f, f)}\n({int(k)})" for f, k in zip(order, n)],
-                                 fontsize=TICK_SIZE - 0.5)
+                                 fontsize=TICK_SIZE)
         h, l = axes[0].get_legend_handles_labels()
-        fig.legend(h, l, loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=5, frameon=False,
-                   fontsize=LEGEND_SIZE, handlelength=1.4, columnspacing=1.0)
-        better_marker(fig, r"Lower is better $\downarrow$")
-        fig.subplots_adjust(left=L(0.075), right=R(0.995), bottom=0.12, top=0.93, hspace=0.32)
+        panel_legend(axes[0], h, l, loc="upper right", ncol=5, handlelength=1.4)
+        for ax in axes:   # wide stacked panels: marker at the right end of each title row
+            ax.set_title(LOWER, loc="right", fontsize=MARKER_SIZE, fontweight="bold",
+                         color="blue", pad=2)
         save(fig, out / f"fig_rq1_family_{model}.pdf")
     return pd.concat(all_g)
 
@@ -441,7 +537,7 @@ TEMPLATE_LABELS = {"ring": "Ring", "blocks4": "Blocks4", "dense4": "Dense4",
                    "dense4full": "Dense4F", "auto": "Auto", "PureMagic": "PureMagic"}
 ABLATIONS = ["-admission", "-pruning", "-priority", "-retry", "-placement",
              "-matching", "-negotiation", "-yfactor"]
-ABLATION_LABELS = {"-admission": "Better availability", "-pruning": "Pruning", "-priority": "Priority",
+ABLATION_LABELS = {"-admission": "Admission", "-pruning": "Pruning", "-priority": "Priority",
                    "-retry": "Retry", "-placement": "Placement", "-matching": "Matching",
                    "-negotiation": "Negotiation", "-yfactor": "Y-term"}
 
@@ -466,28 +562,29 @@ def template_ratio_table(D: Data) -> pd.DataFrame:
 
 def fig_contributions(D: Data, out: Path) -> pd.DataFrame:
     tr = template_ratio_table(D)
-    fig, axes = plt.subplots(1, 3, figsize=(PAPER_WIDTH, 2.45),
-                             gridspec_kw={"width_ratios": [1.05, 1.35, 0.95]})
+    fig, axes = row_figure(3)
 
     # (a) layout template
     ax = axes[0]
     order = TEMPLATES + ["auto", "PureMagic"]
     xs = np.arange(len(order))
-    w = 0.38
-    ymax = 2.3
+    w = 0.45
+    ymax = 3.6
     for j, m in enumerate(MODELS):
         v = np.array([tr[(tr.model == m) & (tr.layout == k)].vol_over_auto.iloc[0] for k in order])
         cols = [BAR_COLOR["PureMagic" if k == "PureMagic" else "Harvest"][m] for k in order]
         bars = ax.bar(xs + (j - 0.5) * w, v, width=w, color=cols,
                       hatch=MODEL_HATCH[m], edgecolor="black", linewidth=0.45)
         bar_labels(ax, bars, v, ymax)
-    ax.axvline(len(TEMPLATES) + 0.5, color="black", linestyle="--", linewidth=0.7, alpha=0.7)
+    # separator stops below the legend row
+    ax.axvline(len(TEMPLATES) + 0.5, ymax=0.78, color="black", linestyle="--", linewidth=0.7,
+               alpha=0.7)
     ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
     ax.set_xticks(xs)
-    ax.set_xticklabels([TEMPLATE_LABELS[k] for k in order], rotation=35, ha="right",
-                       rotation_mode="anchor", fontsize=TICK_SIZE - 0.5)
+    ax.set_xticklabels([TEMPLATE_LABELS[k] for k in order], rotation=45, ha="right",
+                       rotation_mode="anchor", fontsize=TICK_SIZE)
     ax.set_ylim(0, ymax)
-    ax.set_ylabel("Geomean volume ratio", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_ylabel("Volume ratio", fontsize=LABEL_SIZE, labelpad=2)
     ax.set_title(panel_title("a", "Layout (vs. Auto)"), fontsize=TITLE_SIZE, loc="left", pad=3)
     style_axis(ax)
 
@@ -495,63 +592,165 @@ def fig_contributions(D: Data, out: Path) -> pd.DataFrame:
     ax = axes[1]
     s = D.rq2_summary[D.rq2_summary.template == "all"]
     xs = np.arange(len(ABLATIONS))
-    ymax = 2.3
+    ymax = 3.2
+    tallest = max(s[s.ablation.isin(ABLATIONS)].volume_ratio_geomean)
     for j, m in enumerate(MODELS):
         v = np.array([s[(s.model == m) & (s.ablation == a)].volume_ratio_geomean.iloc[0]
                       for a in ABLATIONS])
-        bars = ax.bar(xs + (j - 0.5) * w, v, width=w, color=BAR_COLOR["Harvest"][m],
+        bars = ax.bar(xs + (j - 0.5) * 0.5, v, width=w, color=BAR_COLOR["Harvest"][m],
                       hatch=MODEL_HATCH[m], edgecolor="black", linewidth=0.45)
-        bar_labels(ax, bars, v, ymax)
+        # label only the tallest bar; the others are all close to 1
+        bar_labels(ax, bars, np.where(v == tallest, v, np.nan), ymax)
     ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
     ax.set_xticks(xs)
-    ax.set_xticklabels([ABLATION_LABELS[a] for a in ABLATIONS], rotation=35, ha="right",
-                       rotation_mode="anchor", fontsize=TICK_SIZE - 0.5)
+    ax.set_xticklabels([ABLATION_LABELS[a] for a in ABLATIONS], rotation=45, ha="right",
+                       rotation_mode="anchor", fontsize=TICK_SIZE)
     ax.set_ylim(0, ymax)
-    ax.set_title(panel_title("b", "Without component (vs. full)"), fontsize=TITLE_SIZE,
+    ax.set_ylabel("Volume ratio", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_title(panel_title("b", "Without component"), fontsize=TITLE_SIZE,
                  loc="left", pad=3)
     style_axis(ax)
 
     # (c) negotiation: per-run makespan reduction, sorted
     ax = axes[2]
     n = D.rq2_nego
-    for k, tpl in enumerate(["ring", "blocks4", "dense4"]):
-        for m, ls in [("instant", "-"), ("cultivation", "--")]:
-            v = np.sort(n[(n.template == tpl) & (n.model == m)].makespan_reduction.to_numpy())[::-1] * 100
-            frac = np.arange(1, len(v) + 1) / len(v)
-            ax.plot(frac, v, color=TEMPLATE_COLORS[tpl], linestyle=ls, linewidth=1.2,
-                    label=TEMPLATE_LABELS[tpl] if m == "instant" else None)
-    ax.plot([], [], color="gray", linestyle="-", label="Instant")
-    ax.plot([], [], color="gray", linestyle="--", label="Cultivation")
+    for tpl in ["ring", "blocks4", "dense4"]:   # cultivated magic states only
+        v = np.sort(n[(n.template == tpl) & (n.model == "cultivation")]
+                    .makespan_reduction.to_numpy())[::-1] * 100
+        frac = np.arange(1, len(v) + 1) / len(v)
+        ax.plot(frac, v, color=TEMPLATE_COLORS[tpl], linewidth=1.6, label=TEMPLATE_LABELS[tpl])
+
     ax.axhline(0, color="black", linewidth=0.7)
-    ax.set_xlabel("Fraction of runs", fontsize=LABEL_SIZE - 0.5, labelpad=1)
-    ax.set_ylabel("Timestep reduction (%)", fontsize=LABEL_SIZE - 0.5, labelpad=1)
+    ax.set_xlabel("Fraction of runs", fontsize=LABEL_SIZE, labelpad=1)
+    ax.set_ylabel("Reduction (%)", fontsize=LABEL_SIZE, labelpad=1)
     ax.set_xlim(0, 1.02)
+    # many runs gain 0 % and a few lose, so a plain log axis is impossible: symmetric
+    # log, linear within +-1 %; the top is raised to leave room for the legend
+    ax.set_yscale("symlog", linthresh=1.0, linscale=0.6)
+    ax.set_ylim(-15, 1000)
+    ax.yaxis.set_major_locator(mtick.FixedLocator([-10, 0, 10]))
+    ax.yaxis.set_major_formatter(mtick.FuncFormatter(lambda y, _: f"{y:g}"))
+    ax.yaxis.set_minor_locator(mtick.NullLocator())
     ax.set_xticks([0, 0.5, 1])
     ax.set_title(panel_title("c", "Negotiation gain"), fontsize=TITLE_SIZE, loc="left", pad=3)
-    ax.legend(loc="upper right", frameon=False, fontsize=LEGEND_SIZE - 1, handlelength=1.6,
-              labelspacing=0.25)
+    panel_legend(ax, loc="upper center", ncol=3, handlelength=1.0, columnspacing=0.6,
+                 handletextpad=0.3)
     style_axis(ax, "both")
 
-    fig.legend(handles=model_legend_handles("Harvest"), loc="lower center", bbox_to_anchor=(0.36, 0.0), ncol=2, frameon=False,
-               fontsize=LEGEND_SIZE, handlelength=1.4, columnspacing=1.0)
-    direction_labels = [
-        r"Lower is better $\downarrow$",
-        r"Higher: component matters more $\uparrow$",
-        r"Higher is better $\uparrow$",
-    ]
-    for panel_ax, label in zip(axes, direction_labels):
-        panel_ax.text(0.5, 1.20, label, transform=panel_ax.transAxes,
-                      ha="center", va="bottom", fontsize=LEGEND_SIZE,
-                      fontweight="bold", color="blue", clip_on=False)
-    fig.subplots_adjust(left=L(0.07), right=R(0.995), bottom=0.38, top=0.85, wspace=0.28)
+    panel_legend(axes[0], handles=model_legend_handles("Harvest"), loc="upper center",
+                 ncol=2, handlelength=1.5, handleheight=1.0, columnspacing=0.6)
+    direction_labels = [LOWER, HIGHER, HIGHER]
+    panel_markers(fig, axes, direction_labels)
+    match_axes_height(fig)
     save(fig, out / "fig_rq2_contributions.pdf")
     return tr
+
+
+# --------------------------------------------------------------------------
+# Fig. 3b  RQ2 - framework vs. scheduler, scheduler gain per family, ablation
+# Data: new_experiments/E10_framework_vs_scheduler + rq/rq2 (leave-one-out)
+# --------------------------------------------------------------------------
+E10_BARS = [("EAF", "blocks4"), ("EAF", "auto"), ("Harvest", "blocks4"), ("Harvest", "auto")]
+E10_LABELS = {("EAF", "blocks4"): "EAF\nBlocks4", ("EAF", "auto"): "EAF\nAuto",
+              ("Harvest", "blocks4"): "Harvest\nBlocks4", ("Harvest", "auto"): "Harvest\nAuto"}
+
+
+def e10_tables(ne: Path, rq: Path):
+    tab = pd.read_csv(ne / "E10_framework_vs_scheduler" / "e10_table.csv")
+    pc = pd.read_csv(ne / "E10_framework_vs_scheduler" / "e10_per_circuit.csv")
+    fam = pd.read_csv(rq / "suite.csv")[["circuit", "family"]]
+    x = pc[(pc.compiler == "EAF") & (pc.template == "auto") & (pc.pruning == "on")].merge(fam, on="circuit")
+    n_inst = x[x.model == "instant"].groupby("family").size()
+    single = set(n_inst[n_inst < 2].index)
+    x["fam"] = x.family.where(~x.family.isin(single), "other")
+    g = x.groupby(["fam", "model"]).volume_ratio.apply(gmean).unstack()
+    g["n"] = x[x.model == "instant"].groupby("fam").size()
+    order = g.drop(index="other").sort_values("cultivation", ascending=False).index.tolist() + ["other"]
+    return tab, g.loc[order]
+
+
+def fig_sources(D: Data, ne: Path, rq: Path, out: Path) -> pd.DataFrame:
+    tab, fam = e10_tables(ne, rq)
+    fig, axes = row_figure(3)
+    w = 0.38
+
+    # (a) framework vs. scheduler
+    ax = axes[0]
+    xs = np.arange(len(E10_BARS))
+    ymax = 3.0
+    for j, m in enumerate(MODELS):
+        v = []
+        for comp, tpl in E10_BARS:
+            r = tab[(tab.supply == m) & (tab.scheduler == comp) & (tab.layout == tpl) & (tab.pruning == "on")]
+            v.append(float(r.vol_geomean.iloc[0]))
+        v = np.array(v)
+        cols = [BAR_COLOR[comp][m] for comp, _ in E10_BARS]
+        bars = ax.bar(xs + (j - 0.5) * w, v, width=w, color=cols, hatch=MODEL_HATCH[m],
+                      edgecolor="black", linewidth=0.45)
+        bar_labels(ax, bars, v, ymax)
+    ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
+    # separator stops below the legend row
+    ax.axvline(1.5, ymax=0.78, color="black", linestyle="--", linewidth=0.7, alpha=0.7)
+    ax.set_xticks(xs)
+    ax.set_xticklabels([E10_LABELS[k] for k in E10_BARS], rotation=45, ha="right",
+                       rotation_mode="anchor", fontsize=TICK_SIZE)
+    ax.set_ylim(0, ymax)
+    ax.set_ylabel("Volume ratio", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_title(panel_title("a", "Framework vs. sched."), fontsize=TITLE_SIZE, loc="left", pad=3)
+    style_axis(ax)
+    panel_legend(ax, handles=model_legend_handles(), loc="upper center", ncol=2,
+                 handlelength=1.5, handleheight=1.0, columnspacing=0.6)
+
+    # (b) scheduler gain per family: EAF inside the framework over Harvest
+    ax = axes[1]
+    xs = np.arange(len(fam))
+    ymax = 1.4
+    for j, m in enumerate(MODELS):
+        v = fam[m].to_numpy()
+        ax.bar(xs + (j - 0.5) * w, v, width=w, color=BAR_COLOR["EAF"][m],
+               hatch=MODEL_HATCH[m], edgecolor="black", linewidth=0.45)
+    ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
+    ax.set_xticks(xs)
+    ax.set_xticklabels([FAMILY_LABELS.get(k, k) for k in fam.index],
+                       rotation=90, fontsize=TICK_SIZE)
+    ax.set_ylim(0.85, ymax)
+    ax.set_ylabel("EAF / Harvest", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_title(panel_title("b", "Scheduler gain"), fontsize=TITLE_SIZE, loc="left", pad=3)
+    style_axis(ax)
+
+    # (c) leave-one-out ablation
+    ax = axes[2]
+    s = D.rq2_summary[D.rq2_summary.template == "all"]
+    xs = np.arange(len(ABLATIONS))
+    ymax = 2.6
+    tallest = max(s[s.ablation.isin(ABLATIONS)].volume_ratio_geomean)
+    for j, m in enumerate(MODELS):
+        v = np.array([s[(s.model == m) & (s.ablation == a)].volume_ratio_geomean.iloc[0]
+                      for a in ABLATIONS])
+        bars = ax.bar(xs + (j - 0.5) * w, v, width=w, color=BAR_COLOR["Harvest"][m],
+                      hatch=MODEL_HATCH[m], edgecolor="black", linewidth=0.45)
+        # label only the tallest bar; the others are all close to 1
+        bar_labels(ax, bars, np.where(v == tallest, v, np.nan), ymax)
+    ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
+    ax.set_xticks(xs)
+    ax.set_xticklabels([ABLATION_LABELS[a] for a in ABLATIONS], rotation=45, ha="right",
+                       rotation_mode="anchor", fontsize=TICK_SIZE)
+    ax.set_ylim(0, ymax)
+    ax.set_ylabel("Volume ratio", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_title(panel_title("c", "Without component"), fontsize=TITLE_SIZE, loc="left", pad=3)
+    style_axis(ax)
+
+    panel_markers(fig, axes, [LOWER, HIGHER, HIGHER])
+    match_axes_height(fig)
+    save(fig, out / "fig_rq2_sources.pdf")
+    return fam
 
 
 # --------------------------------------------------------------------------
 # Fig. 4  RQ3 - provisioning: magic terminals vs. volume, before/after pruning
 # --------------------------------------------------------------------------
 RQ3_LEVELS = {"ring": [1, 2, 4, 8, 16], "blocks4": [1, 2, 4, 8, 16], "dense4": [1, 2, 4]}
+RQ3_MODEL_COLORS = {"instant": code_palette_deep[0], "cultivation": code_palette_deep[1]}
 
 
 def rq3_curves(D: Data) -> pd.DataFrame:
@@ -577,16 +776,16 @@ def rq3_curves(D: Data) -> pd.DataFrame:
 
 def fig_provisioning(D: Data, out: Path) -> pd.DataFrame:
     c = rq3_curves(D)
-    fig, axes = plt.subplots(1, 3, figsize=(PAPER_WIDTH, 2.35), sharey=True,
-                             gridspec_kw={"width_ratios": [1, 1, 0.8]})
+    fig, axes = row_figure(3, sharey=True)
     for i, (ax, tpl) in enumerate(zip(axes, RQ3_LEVELS)):
         for m in MODELS:
             s = c[(c.template == tpl) & (c.model == m)]
             x = np.arange(len(s))
-            ax.plot(x, s.pruned, color=LINE_COLOR["Harvest"][m], marker="o", linestyle="-",
+            # color = magic-state model, solid = pruned, dashed = unpruned
+            ax.plot(x, s.pruned, color=RQ3_MODEL_COLORS[m], marker="o", linestyle="-",
                     label=f"{MODEL_LABELS[m]}, pruned")
-            ax.plot(x, s.unpruned, color=LINE_COLOR["Harvest"][m], marker="s", markerfacecolor="white",
-                    linestyle=":", label=f"{MODEL_LABELS[m]}, unpruned")
+            ax.plot(x, s.unpruned, color=RQ3_MODEL_COLORS[m], marker="s", markerfacecolor="white",
+                    linestyle="--", label=f"{MODEL_LABELS[m]}, unpruned")
             labels = list(s.level)
         ax.set_xticks(np.arange(len(labels)))
         ax.set_xticklabels(labels, fontsize=TICK_SIZE)
@@ -594,15 +793,15 @@ def fig_provisioning(D: Data, out: Path) -> pd.DataFrame:
         n = int(c[(c.template == tpl)].n.min())
         ax.set_title(panel_title(chr(97 + i), f"{TEMPLATE_LABELS[tpl]} ({n} circuits)"),
                      fontsize=TITLE_SIZE, loc="left", pad=3)
-        ax.set_ylim(0, 1.45)
+        ax.set_ylim(0, 2.9)   # room for the four-entry legend above the curves
+        ax.set_yticks([0, 0.5, 1.0, 1.5, 2.0, 2.5])
         style_axis(ax, "both")
-    axes[0].set_ylabel("Volume / volume at\n1 magic patch", fontsize=LABEL_SIZE, labelpad=2)
-    fig.supxlabel("# magic patches", fontsize=LABEL_SIZE, y=0.14)
+    for ax in axes:   # every panel gets its own y-axis title
+        ax.set_ylabel("Volume ratio", fontsize=LABEL_SIZE, labelpad=2)
+    axes[1].set_xlabel("# magic patches", fontsize=LABEL_SIZE)
     h, l = axes[0].get_legend_handles_labels()
-    fig.legend(h, l, loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=4, frameon=False,
-               fontsize=LEGEND_SIZE, handlelength=1.6, columnspacing=1.0)
-    better_marker(fig, r"Lower is better $\downarrow$")
-    fig.subplots_adjust(left=L(0.09), right=R(0.995), bottom=0.31, top=0.85, wspace=0.08)
+    panel_legend(axes[0], h, l, loc="upper right", handlelength=1.5, labelspacing=0.15)
+    panel_markers(fig, axes, LOWER)
     save(fig, out / "fig_rq3_provisioning.pdf")
     return c
 
@@ -636,16 +835,31 @@ def rq4_curves(D: Data) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["model", "mode", "level", "n", "T_over_cp", "lb_over_cp"])
 
 
-def fig_supply(D: Data, out: Path) -> pd.DataFrame:
+def supply_rate_sweep(ne: Path, rq: Path) -> pd.DataFrame:
+    """PureMagic/Harvest volume vs. mean cultivation delay (47-circuit subset).
+    Means 1-8 from E14, means 10 and PureMagic's published rate from rq_cult_sweep."""
+    e14 = pd.read_csv(ne / "E14_cultivation_sensitivity" / "e14_table.csv")
+    rows = [(float(r.cultivation_mean), float(r.vol_geomean), int(r.vol_n)) for r in e14.itertuples()]
+    cs = pd.read_csv(rq / "rq_cult_sweep" / "summary.csv")
+    cs = cs[(cs.scope == "per_delay") & (cs.mean_delay > 8.5)]
+    rows += [(float(r.mean_delay), float(r.pm_over_harvest_volume), int(r.n_shared)) for r in cs.itertuples()]
+    return pd.DataFrame(rows, columns=["mean", "pm_over_harvest", "n"]).sort_values("mean")
+
+
+def fig_supply(D: Data, ne: Path, rq: Path, out: Path) -> pd.DataFrame:
     c = rq4_curves(D)
-    fig, axes = plt.subplots(1, 3, figsize=(PAPER_WIDTH, 2.35), sharey=True)
-    for i, (ax, (model, title)) in enumerate(zip(axes, RQ4_MODELS)):
+    sw = supply_rate_sweep(ne, rq)
+    fig, axes = row_figure(3)
+    ax0, ax1, ax2 = axes
+    ax1.sharey(ax0)
+    panels = [(ax0, "dist4", r"Distillation, $\mu=4$"), (ax1, "cultivation", "Cultivation")]
+    for i, (ax, model, title) in enumerate(panels):
         a = c[(c.model == model) & (c["mode"] == "aware")]
         o = c[(c.model == model) & (c["mode"] == "oblivious")]
         ax.plot(a.level, a.lb_over_cp, color="black", linestyle=":", linewidth=1.2,
-                label=r"Lower bound $\max(T_{cp}, \mathrm{supply})$", zorder=5)
+                label="Lower bound", zorder=5)
         ax.plot(o.level, o.T_over_cp, color=OBLIVIOUS_COLOR, marker="s",
-                linestyle="--", label="Magic-oblivious (replayed)")
+                linestyle="--", label="Magic-agnostic (replayed)")
         ax.plot(a.level, a.T_over_cp, color=COMPILER_COLORS["Harvest"], marker="o",
                 label="Harvest (resource-aware)")
         ax.set_xscale("log", base=2)
@@ -653,20 +867,39 @@ def fig_supply(D: Data, out: Path) -> pd.DataFrame:
         ax.xaxis.set_major_locator(mtick.FixedLocator(RQ4_LEVELS))
         ax.xaxis.set_major_formatter(mtick.FixedFormatter([str(l) for l in RQ4_LEVELS]))
         ax.xaxis.set_minor_locator(mtick.NullLocator())
-        ax.yaxis.set_major_locator(mtick.FixedLocator([1, 2, 5, 10, 20]))
+        ax.yaxis.set_major_locator(mtick.FixedLocator([1, 3, 10, 30]))
         ax.yaxis.set_major_formatter(mtick.FuncFormatter(lambda y, _: f"{y:g}"))
         ax.yaxis.set_minor_formatter(mtick.NullFormatter())
-        n = int(a.n.min())
-        ax.set_title(panel_title(chr(97 + i), f"{title} ({n})"), fontsize=TITLE_SIZE,
+        ax.set_xlabel("# magic patches", fontsize=LABEL_SIZE)
+        ax.set_ylabel(r"Timesteps / depth", fontsize=LABEL_SIZE, labelpad=2)
+        ax.set_title(panel_title(chr(97 + i), title), fontsize=TITLE_SIZE,
                      loc="left", pad=3)
         style_axis(ax, "both")
-    axes[0].set_ylabel(r"Timesteps / $T_{cp}$", fontsize=LABEL_SIZE, labelpad=2)
-    fig.supxlabel("# magic patches", fontsize=LABEL_SIZE, y=0.14)
-    h, l = axes[0].get_legend_handles_labels()
-    fig.legend(h[::-1], l[::-1], loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=3,
-               frameon=False, fontsize=LEGEND_SIZE, handlelength=1.8, columnspacing=1.0)
-    better_marker(fig, r"Lower is better $\downarrow$")
-    fig.subplots_adjust(left=L(0.08), right=R(0.995), bottom=0.31, top=0.85, wspace=0.08)
+    ax0.set_ylim(top=200)   # shared y: room for the legend above the curves
+    h, l = ax0.get_legend_handles_labels()
+    panel_legend(ax0, h[::-1], l[::-1], loc="upper right", handlelength=1.8,
+                 labelspacing=0.3)
+
+    # (c) supply-rate sweep against PureMagic
+    ax = ax2
+    ax.axhspan(1.0, 1.45, color=BAR_COLOR["Harvest"]["cultivation"], alpha=0.35, linewidth=0)
+    ax.axhline(1.0, color="black", linewidth=0.7, linestyle="--")
+    ax.plot(sw["mean"], sw.pm_over_harvest, color=COMPILER_COLORS["PureMagic"], marker="o")
+    ax.axvline(3, color="0.4", linestyle=":", linewidth=1.0)
+    ax.text(3.15, 1.42, r"default $\bar{d}=3$", fontsize=LEGEND_SIZE, va="top", color="0.3")
+    ax.text(26, 1.03, "Harvest lower", fontsize=LEGEND_SIZE, va="bottom", ha="right", color="0.25")
+    ax.text(1.05, 0.97, "PureMagic lower", fontsize=LEGEND_SIZE, va="top", color="0.25")
+    ax.set_xscale("log")
+    ax.xaxis.set_major_locator(mtick.FixedLocator([1, 2, 3, 5, 10, 26]))
+    ax.xaxis.set_major_formatter(mtick.FuncFormatter(lambda x, _: f"{x:g}"))
+    ax.xaxis.set_minor_locator(mtick.NullLocator())
+    ax.set_ylim(0.65, 1.45)
+    ax.set_ylabel("PureMagic / Harvest", fontsize=LABEL_SIZE, labelpad=2)
+    ax.set_xlabel("Mean cultivation delay", fontsize=LABEL_SIZE)
+    ax.set_title(panel_title("c", "Supply rate"), fontsize=TITLE_SIZE, loc="left", pad=3)
+    style_axis(ax, "both")
+
+    panel_markers(fig, axes, [LOWER, LOWER, HIGHER])
     save(fig, out / "fig_rq4_supply.pdf")
     return c
 
@@ -674,30 +907,39 @@ def fig_supply(D: Data, out: Path) -> pd.DataFrame:
 # --------------------------------------------------------------------------
 # Fig. 6  RQ5 - compile time
 # --------------------------------------------------------------------------
+COMPILE_MIN_BIN = 3   # bins with fewer circuits are left out
+
+
 def fig_compile(D: Data, out: Path) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(PAPER_WIDTH, 2.35),
-                             gridspec_kw={"width_ratios": [1.25, 1]})
+    fig, axes = row_figure(2)
     ax = axes[0]
+    # Same circuits for every compiler (EAF fails on the largest ones), so each line
+    # averages the same set; geometric mean per half-decade bin of |O|, no model fit.
     r = D.ratios("instant")
+    r = r[r.compile_time_s > 0]
+    k = r.groupby("circuit").compiler.nunique()
+    r = r[r.circuit.isin(k[k == len(COMPILERS)].index)]
+    n_common = r.circuit.nunique()
+    edges = 10 ** np.arange(0, 5.01, 0.5)
+    r = r.assign(bin=pd.cut(r.ops, edges, right=False))
+    rows = []
     for c in COMPILERS:
-        s = r[(r.compiler == c)].dropna(subset=["compile_time_s"])
-        s = s[s.compile_time_s > 0].sort_values("ops")
-        ax.scatter(s.ops, s.compile_time_s, s=9, color=COMPILER_COLORS[c],
-                   edgecolors="black", linewidths=0.3, label=c, zorder=3)
-        if len(s) > 5:
-            k, b = np.polyfit(np.log10(s.ops), np.log10(s.compile_time_s), 1)
-            xx = np.logspace(np.log10(s.ops.min()), np.log10(s.ops.max()), 50)
-            ax.plot(xx, 10 ** b * xx ** k, color=COMPILER_COLORS[c], linewidth=1.0)
+        g = (r[r.compiler == c].groupby("bin", observed=True)
+             .agg(n=("circuit", "size"), ops=("ops", gmean), t=("compile_time_s", gmean),
+                  t_min=("compile_time_s", "min"), t_max=("compile_time_s", "max")))
+        g = g[g.n >= COMPILE_MIN_BIN]
+        ax.plot(g.ops, g.t, color=COMPILER_COLORS[c], marker=COMPILER_MARKERS[c],
+                markersize=5, linewidth=1.6, label=c, zorder=4 if c == "Harvest" else 3)
+        rows.append(g.assign(compiler=c).reset_index())
+    pd.concat(rows).to_csv(out / "fig_rq5_compile_values.csv", index=False)
     ax.set_xscale("log")
     ax.set_yscale("log")
-    ax.set_xlabel(r"Pauli rotations $|O|$", fontsize=LABEL_SIZE - 0.5, labelpad=1)
+    ax.set_xlabel(r"Pauli rotations $|O|$", fontsize=LABEL_SIZE, labelpad=1)
     ax.set_ylabel("Compile time (s)", fontsize=LABEL_SIZE, labelpad=2)
-    ax.set_title(panel_title("a", "Compile time (instant)"), fontsize=TITLE_SIZE, loc="left", pad=3)
-    ax.set_title(r"Lower is better $\downarrow$", fontsize=LEGEND_SIZE, loc="right", pad=3,
-                 fontweight="bold", color="blue")
+    ax.set_title(panel_title("a", f"Compile time (free model, {n_common} circuits)"),
+                 fontsize=TITLE_SIZE, loc="left", pad=3)
     style_axis(ax, "both")
-    ax.legend(loc="upper left", frameon=False, fontsize=LEGEND_SIZE - 1, ncol=2,
-              handletextpad=0.2, columnspacing=0.6, labelspacing=0.2)
+    panel_legend(ax, loc="upper left", ncol=3, handlelength=1.8)
 
     # (b) Harvest phase breakdown by circuit size
     ax = axes[1]
@@ -715,20 +957,19 @@ def fig_compile(D: Data, out: Path) -> None:
         ax.bar(xs, share[p].to_numpy(), bottom=bottom, width=0.62, color=PHASE_COLORS[k],
                hatch=code_hatches[k], edgecolor="black", linewidth=0.45, label=lab)
         bottom += share[p].to_numpy()
-    counts = d.groupby("bin", observed=False).size()
     ax.set_xticks(xs)
-    ax.set_xticklabels([f"{l}\n(n={counts[l]})" for l in labs], fontsize=TICK_SIZE - 0.5)
-    ax.set_ylim(0, 100)
-    ax.set_xlabel(r"Pauli rotations $|O|$", fontsize=LABEL_SIZE - 0.5, labelpad=1)
+    ax.set_xticklabels(labs, fontsize=TICK_SIZE)
+    ax.set_ylim(0, 170)   # headroom above 100 % for the legend
+    ax.set_yticks([0, 25, 50, 75, 100])
+    ax.set_xlabel(r"Pauli rotations $|O|$", fontsize=LABEL_SIZE, labelpad=1)
     ax.set_ylabel("Share of time (%)", fontsize=LABEL_SIZE, labelpad=2)
     ax.set_title(panel_title("b", "Harvest phases"), fontsize=TITLE_SIZE, loc="left", pad=3)
     style_axis(ax)
-    fig.subplots_adjust(left=L(0.08), right=R(0.995), bottom=0.31, top=0.85, wspace=0.28)
-    h, l = ax.get_legend_handles_labels()
-    panel_center = ax.get_position().x0 + ax.get_position().width / 2
-    fig.legend(h, l, loc="lower center", bbox_to_anchor=(panel_center, 0.0), ncol=4,
-               frameon=False, fontsize=LEGEND_SIZE - 0.5, handlelength=1.3,
-               columnspacing=0.6)
+    panel_legend(ax, loc="upper center", ncol=2, handlelength=1.3, columnspacing=0.6,
+                 labelspacing=0.2)
+    # a phase share has no better direction, so (b) gets no marker
+    panel_markers(fig, axes, [LOWER, ""])
+    match_axes_height(fig)
     save(fig, out / "fig_rq5_compile.pdf")
 
 
@@ -929,23 +1170,26 @@ def tab_validity(D: Data, out: Path) -> None:
 # --------------------------------------------------------------------------
 FIGURE_TEX = {
     "fig_rq1_family_cultivation": (
-        r"""\textbf{Results per circuit family} (RQ1), cultivated magic states. Geometric means per family for \textbf{(a)}~normalized space--time volume, \textbf{(b)}~timesteps over the critical path, and \textbf{(c)}~patches per logical qubit. Families with fewer than three circuits are merged into \emph{Other}; numbers in parentheses give the circuits per family. The solid line marks the lower bound. Clipped bars are labeled with their value.""",
+        r"""\textbf{Results per circuit family} (RQ1), cultivated magic states. Geometric means per family for \textbf{(a)}~normalized space--time volume, \textbf{(b)}~timesteps over the circuit depth, and \textbf{(c)}~patches per logical qubit. Families with fewer than three circuits are merged into \emph{Other}; numbers in parentheses give the circuits per family. The solid line marks the lower bound. Clipped bars are labeled with their value.""",
         "fig:rq1-family"),
     "fig_rq1_family_instant": (
-        r"""\textbf{Results per circuit family} (RQ1), instant magic states. Geometric means per family for \textbf{(a)}~normalized space--time volume, \textbf{(b)}~timesteps over the critical path, and \textbf{(c)}~patches per logical qubit. Families with fewer than three circuits are merged into \emph{Other}; numbers in parentheses give the circuits per family. The solid line marks the lower bound. Clipped bars are labeled with their value.""",
+        r"""\textbf{Results per circuit family} (RQ1), instant magic states. Geometric means per family for \textbf{(a)}~normalized space--time volume, \textbf{(b)}~timesteps over the circuit depth, and \textbf{(c)}~patches per logical qubit. Families with fewer than three circuits are merged into \emph{Other}; numbers in parentheses give the circuits per family. The solid line marks the lower bound. Clipped bars are labeled with their value.""",
         "fig:rq1-family-instant"),
     "fig_rq1_per_circuit": (
         r"""\textbf{Per-circuit volume relative to Harvest} (RQ1) under \textbf{(a)}~instant and \textbf{(b)}~cultivated magic states. Each line sorts one compiler's volume ratios; values above one favor Harvest. Labels give the number of circuits on which Harvest has the lower volume.""",
         "fig:rq1-per-circuit"),
     "fig_rq1_size_cultivation": (
-        r"""\textbf{Scaling with circuit size} (RQ1), cultivated magic states. Circuits are sorted by the number of logical qubits $n$ (tick labels). \textbf{(a)}~Normalized space--time volume, \textbf{(b)}~timesteps over the critical path, and \textbf{(c)}~patches per logical qubit. Lines show the geometric mean over nine neighboring circuits. The solid black line marks the lower bound.""",
+        r"""\textbf{Scaling with circuit size} (RQ1), cultivated magic states. Circuits are sorted by the number of logical qubits $n$ (tick labels). \textbf{(a)}~Normalized space--time volume, \textbf{(b)}~timesteps over the circuit depth, and \textbf{(c)}~patches per logical qubit. Lines show the geometric mean over nine neighboring circuits. The solid black line marks the lower bound.""",
         "fig:rq1-size"),
     "fig_rq1_size_instant": (
-        r"""\textbf{Scaling with circuit size} (RQ1), instant magic states. Circuits are sorted by the number of logical qubits $n$ (tick labels). \textbf{(a)}~Normalized space--time volume, \textbf{(b)}~timesteps over the critical path, and \textbf{(c)}~patches per logical qubit. Lines show the geometric mean over nine neighboring circuits. The solid black line marks the lower bound.""",
+        r"""\textbf{Scaling with circuit size} (RQ1), instant magic states. Circuits are sorted by the number of logical qubits $n$ (tick labels). \textbf{(a)}~Normalized space--time volume, \textbf{(b)}~timesteps over the circuit depth, and \textbf{(c)}~patches per logical qubit. Lines show the geometric mean over nine neighboring circuits. The solid black line marks the lower bound.""",
         "fig:rq1-size-instant"),
     "fig_rq1_sota": (
-        r"""\textbf{Comparison with the state of the art} (RQ1). Geometric means over all circuits under instant (dark) and cultivated (light) magic states, normalized to circuit size $n$ and critical-path length $T_{cp}$. \textbf{(a)}~Space--time volume per data patch and critical-path step. \textbf{(b)}~Timesteps over the critical path. \textbf{(c)}~Patches per logical qubit. The solid line marks the respective lower bound: $n$ data patches for $T_{cp}$ steps. Bars above the axis limit are clipped and labeled with their value.""",
+        r"""\textbf{Comparison with the state of the art} (RQ1). Geometric means over all circuits under instant (dark) and cultivated (light) magic states, normalized to circuit size $n$ and circuit depth (the longest chain of dependent rotations, i.e., the fewest timesteps any schedule needs). \textbf{(a)}~Space--time volume per data patch and depth step. \textbf{(b)}~Timesteps over the depth. \textbf{(c)}~Patches per logical qubit. The solid line marks the respective lower bound: $n$ data patches for depth steps. Bars above the axis limit are clipped and labeled with their value.""",
         "fig:rq1-sota"),
+    "fig_rq2_sources": (
+        r"""\textbf{Sources of the improvement} (RQ2), 47 circuits. \textbf{(a)}~Volume of EAF and Harvest on the blocks-of-four template and with the per-circuit template choice (Auto), all with pruning, relative to Harvest (Auto). \textbf{(b)}~Volume of EAF over Harvest when both run inside Harvest's framework (Auto, pruning), per circuit family; \emph{Other} merges families with one circuit. \textbf{(c)}~Leave-one-out ablation: volume of Harvest without one component, relative to full Harvest.""",
+        "fig:rq2-sources"),
     "fig_rq2_contributions": (
         r"""\textbf{Sources of the improvement} (RQ2). \textbf{(a)}~Volume of Harvest restricted to a single layout template, and of PureMagic, relative to Harvest's per-circuit template choice (Auto). \textbf{(b)}~Leave-one-out ablation: volume of Harvest without one component, relative to full Harvest. \textbf{(c)}~Timestep reduction from negotiated-congestion routing per run, sorted, for three templates.""",
         "fig:rq2-contributions"),
@@ -953,10 +1197,10 @@ FIGURE_TEX = {
         r"""\textbf{Layout provisioning} (RQ3). Space--time volume as the working layout provides more magic-state patches, relative to the pruned volume with a single magic-state patch, on the \textbf{(a)}~ring, \textbf{(b)}~blocks-of-four, and \textbf{(c)}~dense template. Filled markers show the reported (pruned) volume, open markers the volume of the working layout before pruning. \emph{max} uses every magic-state patch of the template.""",
         "fig:rq3-provisioning"),
     "fig_rq4_supply": (
-        r"""\textbf{Magic-state protocols} (RQ4). Timesteps over the critical path as the number of magic-state patches grows under \textbf{(a)}~distillation with $\mu=4$, \textbf{(b)}~distillation with $\mu=10$, and \textbf{(c)}~cultivation. Harvest schedules against the supply model; the magic-oblivious schedule is computed for instant supply and replayed with stalls. The dotted line is the lower bound $\max(T_{cp}, \text{supply})$. Panel titles give the number of circuits.""",
+        r"""\textbf{Magic-state supply} (RQ4). Timesteps over the circuit depth as the number of magic-state patches grows under \textbf{(a)}~distillation with $\mu=4$ and \textbf{(b)}~cultivation. Harvest schedules against the supply model; the magic-agnostic schedule is computed for instant supply and replayed with stalls. The dotted line is the lower bound $\max(\text{depth}, \text{supply})$. \textbf{(c)}~Volume of PureMagic over Harvest as the mean cultivation delay (in timesteps) grows; values above one favor Harvest.""",
         "fig:rq4-supply"),
     "fig_rq5_compile": (
-        r"""\textbf{Compilation cost} (RQ5). \textbf{(a)}~Compile time over the number of Pauli rotations under instant magic states, with log--log fits; Harvest's time includes all four layout templates. \textbf{(b)}~Share of Harvest's compile time per stage, by circuit size.""",
+        r"""\textbf{Compilation cost} (RQ5). \textbf{(a)}~Compile time under instant magic states over the number of Pauli rotations: geometric mean per half-decade of $|O|$, on the circuits every compiler finished (EAF fails on the six largest, $|O| > 20$k). Harvest's time includes all four layout templates; the baselines' times are for their best variant only. \textbf{(b)}~Share of Harvest's compile time per stage, by circuit size.""",
         "fig:rq5-compile"),
 }
 
@@ -976,7 +1220,7 @@ def write_figure_tex(out: Path, tex_dir: str = "figures/evaluation") -> None:
 
 
 # --------------------------------------------------------------------------
-def main(rq: Path, out: Path) -> None:
+def main(rq: Path, out: Path, ne: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
     D = Data(rq)
     fig_sota(D, out)
@@ -984,8 +1228,9 @@ def main(rq: Path, out: Path) -> None:
     sc = fig_size(D, out)
     fc = fig_family(D, out)
     tr = fig_contributions(D, out)
+    fam = fig_sources(D, ne, rq, out)
     c3 = fig_provisioning(D, out)
-    c4 = fig_supply(D, out)
+    c4 = fig_supply(D, ne, rq, out)
     fig_compile(D, out)
     t1 = tab_sota(D, out)
     # tab_contributions(D, tr, out)  # dropped from the paper; the figure carries RQ2
@@ -997,10 +1242,13 @@ def main(rq: Path, out: Path) -> None:
         (out / "numbers_for_text.txt").write_text(
             "RQ1 table\n" + t1.round(3).to_string() + "\n\nRQ1 by size\n" + sc.round(3).to_string() + "\n\nRQ1 by family\n" + fc.round(3).to_string() + "\n\nRQ2 layout\n" + tr.round(3).to_string()
             + "\n\nRQ3 curves\n" + c3.round(3).to_string() + "\n\nRQ4 curves\n" + c4.round(3).to_string()
+            + "\n\nRQ2 scheduler gain per family\n" + fam.round(3).to_string()
+            + "\n\nRQ3 supply-rate sweep\n" + supply_rate_sweep(ne, rq).round(3).to_string()
             + "\n\nRQ5 scaling fit\n" + D.rq5_fit.to_string() + "\n")
 
 
 if __name__ == "__main__":
     rq_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("rq")
     out_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("figures/evaluation")
-    main(rq_dir, out_dir)
+    ne_dir = Path(sys.argv[3]) if len(sys.argv) > 3 else rq_dir.parent / "new_experiments"
+    main(rq_dir, out_dir, ne_dir)

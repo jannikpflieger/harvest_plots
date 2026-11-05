@@ -1,0 +1,11 @@
+model,compiler,vol_per_qubit_cp,T_over_cp,area_per_qubit
+instant,Litinski,6.253,2.2,2.842
+instant,O3LS,10.857,3.739,2.904
+instant,EAF,4.614,1.185,3.894
+instant,PureMagic,4.28,1.044,4.1
+instant,Harvest,3.239,1.11,2.918
+cultivation,Litinski,8.109,2.719,2.982
+cultivation,O3LS,19.917,8.695,2.291
+cultivation,EAF,5.189,1.09,4.759
+cultivation,PureMagic,4.354,1.062,4.1
+cultivation,Harvest,3.766,1.157,3.254
